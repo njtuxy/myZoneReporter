@@ -156,12 +156,11 @@
             <!--<tr ng-repeat="y in previous_db_items | orderBy:predicate:reverse">-->
                 <td>{{x.Zone}}</td>
                 <td ng-mouseover="TileCountValue=x.P_TileCount + '---->' + x.TileCount" ng-mouseout = "TileCountValue=x.TileCount" ng-init="TileCountValue=x.TileCount" >{{TileCountValue}}</td>
-                <!--<td>{{x.P_TileCountChange}} &#8594 {{x.TileCount}} </td>-->
                 <td ng-style="{'background-color' : (x.TileCountChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}"> {{" " +  x.TileCountChange}}%</td>
-                <!--<td> {{x.TotalGameObjects}}</td>-->
-                <td>{{x.P_TotalGameObjects}} &#8594 {{x.TotalGameObjects}} </td>
-
+                <!--<td>{{x.P_TotalGameObjects}} &#8594 {{x.TotalGameObjects}} </td>-->
+                <td ng-mouseover="TotalGameObjects=x.TotalGameObjects + ' <---- ' + x.P_TotalGameObjects" ng-mouseout = "TotalGameObjects=x.TotalGameObjects" ng-init="TotalGameObjects=x.TotalGameObjects" >{{TotalGameObjects}}</td>
                 <td ng-style="{'background-color' : (x.TotalGameObjectsChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}"> {{" " +  x.TotalGameObjectsChange}}%</td>
+
                 <td> {{x["SizeOnDisk"]}}</td>
                 <td> {{x.SizeOnDiskChange}}</td>
                 <td> {{x.Verts}}</td>
