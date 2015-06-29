@@ -85,6 +85,7 @@
                     <a href="" ng-click="order('Zone')">Zone</a>
                     <span class="sortorder" ng-show="predicate === 'Zone'" ng-class="{reverse:reverse}"></span>
                 </th>
+
                 <th>
                     <a href="" ng-click="order('TileCount')">TileCount</a>
                     <span class="sortorder" ng-show="predicate === 'TileCount'" ng-class="{reverse:reverse}"></span>
@@ -98,6 +99,12 @@
                 <th>
                     <a href="" ng-click="order('TotalGameObjects')">TotalGameObjects</a>
                     <span class="sortorder" ng-show="predicate === 'TotalGameObjects'" ng-class="{reverse:reverse}"></span>
+                </th>
+
+
+                <th>
+                    <a href="" ng-click="order('TotalGameObjectsChange')">TotalGameObjectsChange</a>
+                    <span class="sortorder" ng-show="predicate === 'TotalGameObjectsChange'" ng-class="{reverse:reverse}"></span>
                 </th>
 
 
@@ -148,11 +155,13 @@
             <tr ng-repeat="x in db_items | orderBy:predicate:reverse">
             <!--<tr ng-repeat="y in previous_db_items | orderBy:predicate:reverse">-->
                 <td>{{x.Zone}}</td>
-                <!--<td>{{x.TileCount}}</td>-->
-                <td>Current: {{x.TileCount}} Previous: {{x.P_TileCountChange}}</td>
+                <td ng-mouseover="TileCountValue=x.P_TileCount + '---->' + x.TileCount" ng-mouseout = "TileCountValue=x.TileCount" ng-init="TileCountValue=x.TileCount" >{{TileCountValue}}</td>
+                <!--<td>{{x.P_TileCountChange}} &#8594 {{x.TileCount}} </td>-->
                 <td ng-style="{'background-color' : (x.TileCountChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}"> {{" " +  x.TileCountChange}}%</td>
+                <!--<td> {{x.TotalGameObjects}}</td>-->
+                <td>{{x.P_TotalGameObjects}} &#8594 {{x.TotalGameObjects}} </td>
 
-                <td> {{x.TotalGameObjects}}</td>
+                <td ng-style="{'background-color' : (x.TotalGameObjectsChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}"> {{" " +  x.TotalGameObjectsChange}}%</td>
                 <td> {{x["SizeOnDisk"]}}</td>
                 <td> {{x.SizeOnDiskChange}}</td>
                 <td> {{x.Verts}}</td>
