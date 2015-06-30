@@ -18,6 +18,11 @@
         content: '\25bc';
     }
 
+    .colorLink a
+    {
+        color: orange !important;
+    }
+
     .table tbody tr > td.success {
         background-color: #dff0d8 !important;
     }
@@ -56,15 +61,6 @@
     }
 
 </style>
-<!--<script src="http://code.highcharts.com/stock/highstock.src.js"></script>-->
-<!--<script src="./lib/Underscore.js"></script>-->
-<!--<script src="./lib/highcharts-ng.js"></script>-->
-<!--<script src="./lib/highcharts-app.js"></script>-->
-<!-- Additional files for the Highslide popup effect -->
-<!--<script type="text/javascript" src="http://www.highcharts.com/media/com_demo/highslide-full.min.js"></script>-->
-<!--<script type="text/javascript" src="http://www.highcharts.com/media/com_demo/highslide.config.js" charset="utf-8"></script>-->
-<!--<link rel="stylesheet" type="text/css" href="http://www.highcharts.com/media/com_demo/highslide.css" />-->
-
 
 </head>
 
@@ -72,7 +68,6 @@
 <body>
 <div ng-app="zone_report">
     <!--<h3 class="events text-center" >SWAT - Zone Report</h3>-->
-
     <div ng-controller="zone_reporter_table" class="table-responsive">
 
         <table class="table table-striped table-bordered table-hover table-condensed" >
@@ -84,14 +79,19 @@
 
                 <th>
                     <a href="" ng-click="order('TileCount')">TileCount</a>
-                    <div> <a ng-click="toggleTileCountChangePencentage()">Show Pencentage</a> </div>
-                    <a ng-click="toggleShowPreviousTileCount()">Show Previous Value</a>
                     <span class="sortorder" ng-show="predicate === 'TileCount'" ng-class="{reverse:reverse}"></span>
-                </th>
 
-                <th>
-                    <a href="" ng-click="order('TileCountChange')">TileCountChange</a>
-                    <span class="sortorder" ng-show="predicate === 'TileCountChange'" ng-class="{reverse:reverse}"></span>
+                    <div class="colorLink" >
+                        <label>Show percentage increase
+                            <input type="checkbox" ng-model="showTileCountChangePencentage">
+                        </label><br/>
+
+                        <label>Show Previous Value
+                            <input type="checkbox" ng-model="showPreviousTileCountChangePencentage">
+                        </label><br/>
+                    </div>
+
+
                 </th>
 
                 <th>
@@ -151,14 +151,11 @@
             </tr>
 
             <tr ng-repeat="x in db_items | orderBy:predicate:reverse">
-            <!--<tr ng-repeat="y in previous_db_items | orderBy:predicate:reverse">-->
+
                 <td>{{x.Zone}}</td>
 
 
                 <td ng-style="{'background-color' : (x.TileCountChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}"
-                    <!--ng-mouseover="TileCountValue=x.TileCount + ' <-&#45;&#45; ' + x.P_TileCount"-->
-                    <!--ng-mouseout = "TileCountValue=x.TileCount"-->
-                    <!--ng-init="TileCountValue=x.TileCount" >-->
                     <span ng-hide="showPreviousTileCountChangePencentage">{{x.TileCount}} </span>
                     <span ng_show = "showPreviousTileCountChangePencentage"> {{x.TileCount}}  -- {{x.P_TileCount}} </span>
                     <span ng-show="showTileCountChangePencentage">{{" " +  x.TileCountChange}}%</span>
@@ -166,11 +163,8 @@
 
 
 
-                <td ng-style="{'background-color' : (x.TileCountChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}"> {{" " +  x.TileCountChange}}%</td>
-                <!--<td>{{x.P_TotalGameObjects}} &#8594 {{x.TotalGameObjects}} </td>-->
                 <td ng-mouseover="TotalGameObjects=x.TotalGameObjects + ' <---- ' + x.P_TotalGameObjects" ng-mouseout = "TotalGameObjects=x.TotalGameObjects" ng-init="TotalGameObjects=x.TotalGameObjects" >{{TotalGameObjects}}</td>
                 <td ng-style="{'background-color' : (x.TotalGameObjectsChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}"> {{" " +  x.TotalGameObjectsChange}}%</td>
-
                 <td> {{x["SizeOnDisk"]}}</td>
                 <td> {{x.SizeOnDiskChange}}</td>
                 <td> {{x.Verts}}</td>
@@ -179,12 +173,20 @@
                 <td> {{x.PlaymakerEvents}}</td>
                 <td> {{x.EnemySpawners}}</td>
                 <td> {{x.Breakables}}</td>
-            <!--</tr>-->
             </tr>
         </table>
 
     </div>
 
+
+    <!--<script src="http://code.highcharts.com/stock/highstock.src.js"></script>-->
+    <!--<script src="./lib/Underscore.js"></script>-->
+    <!--<script src="./lib/highcharts-ng.js"></script>-->
+    <!--<script src="./lib/highcharts-app.js"></script>-->
+    <!-- Additional files for the Highslide popup effect -->
+    <!--<script type="text/javascript" src="http://www.highcharts.com/media/com_demo/highslide-full.min.js"></script>-->
+    <!--<script type="text/javascript" src="http://www.highcharts.com/media/com_demo/highslide.config.js" charset="utf-8"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="http://www.highcharts.com/media/com_demo/highslide.css" />-->
 
     <!--<div ng-controller="mySwatAndroidBuildChart">-->
     <!--<div class="row">-->
@@ -196,6 +198,27 @@
     <!--</div>-->
     <!--</div>-->
     <!--</div>-->
+    <!--ng-mouseover="TileCountValue=x.TileCount + ' <-&#45;&#45; ' + x.P_TileCount"-->
+    <!--ng-mouseout = "TileCountValue=x.TileCount"-->
+    <!--ng-init="TileCountValue=x.TileCount" >-->
+    <!--//$scope.toggleTileCountChangePencentage = function() {-->
+    <!--//    $scope.showTileCountChangePencentage = !$scope.showTileCountChangePencentage;-->
+    <!--//}-->
+    <!--//-->
+    <!--//$scope.toggleShowPreviousTileCount = function() {-->
+    <!--//    $scope.showPreviousTileCountChangePencentage = !$scope.showPreviousTileCountChangePencentage;-->
+    <!--//}-->
+    <!--<td ng-style="{'background-color' : (x.TileCountChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}"> {{" " +  x.TileCountChange}}%</td>-->
+    <!--<td>{{x.P_TotalGameObjects}} &#8594 {{x.TotalGameObjects}} </td>-->
+    <!--<div><a ng-click="toggleTileCountChangePencentage()">Show percentage increase</a></div>-->
+    <!--<div><a ng-click="toggleShowPreviousTileCount()">Toggle Previous Value</a></div>-->
+    <!--<th>-->
+    <!--<a href="" ng-click="order('TileCountChange')">TileCountChange</a>-->
+    <!--<span class="sortorder" ng-show="predicate === 'TileCountChange'" ng-class="{reverse:reverse}"></span>-->
+    <!--</th>-->
+    <!--<tr ng-repeat="y in previous_db_items | orderBy:predicate:reverse">-->
+
+
 
 </div>
 
