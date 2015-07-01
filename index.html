@@ -125,10 +125,10 @@
                 </th>
 
 
-                <th>
-                    <a href="" ng-click="order('SizeOnDiskChange')">SizeOnDiskChange</a>
-                    <span class="sortorder" ng-show="predicate === 'SizeOnDiskChange'" ng-class="{reverse:reverse}"></span>
-                </th>
+                <!--<th>-->
+                    <!--<a href="" ng-click="order('SizeOnDiskChange')">SizeOnDiskChange</a>-->
+                    <!--<span class="sortorder" ng-show="predicate === 'SizeOnDiskChange'" ng-class="{reverse:reverse}"></span>-->
+                <!--</th>-->
 
                 <th>
                     <a href="" ng-click="order('Verts')">Verts</a>
@@ -168,17 +168,18 @@
                 <td class="text-justify">{{x.Zone}}</td>
 
 
-                <td class="text-justify">
-                    <em ng-hide="showPreviousTileCount">{{x.TileCount}} </em>
-                    <em ng_show = "showPreviousTileCount"> {{x.TileCount}}   &#9666 {{x.P_TileCount}} </em>
+                <td>
+                    <kbd class="bg-primary" >{{x.TileCount}} </kbd>
+                    <kbd ng_show = "showPreviousTileCount"> &#9666 {{x.P_TileCount}} </kbd>
                     <code class="text-right" ng-show="showTileCountChangePencentage" ng-style="{'background-color' : (x.TileCountChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px', 'text-align':'right'}">
                         {{" " +  x.TileCountChange|pn_number}}%
                     </code>
                 </td>
 
                 <td>
-                    <em ng-hide="showPreviousTotalGameObjects">{{x.TotalGameObjects}} </em>
-                    <em ng_show = "showPreviousTotalGameObjects"> {{x.TotalGameObjects}}   &#9666 {{x.P_TotalGameObjects}} </em>
+                    <!--&lt;!&ndash;ng-hide="showPreviousTotalGameObjects"&ndash;&gt;&#9666-->
+                    <kbd class="bg-primary" >{{x.TotalGameObjects}} </kbd>
+                    <kbd ng_show = "showPreviousTotalGameObjects"> &#9666 {{x.P_TotalGameObjects}} </kbd>
                     <code class="text-right" ng-show="showTotalGameObjectsChangePencentage" ng-style="{'background-color' : (x.TotalGameObjectsChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
                             {{"  "+ x.TotalGameObjectsChange|pn_number}}%
                     </code>
@@ -186,17 +187,17 @@
 
 
                 <td>
-                    <span ng-hide="showPreviousSizeOnDisk">{{x.SizeOnDisk}} </span>
-                    <span ng_show = "showPreviousSizeOnDisk"> {{x.SizeOnDisk}}   &#9666 {{x.P_SizeOnDisk}} </span>
-                    <span class="text-right" ng-show="showSizeOnDiskChangePencentage" ng-style="{'background-color' : (x.SizeOnDiskChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
+                    <kbd class="bg-primary">{{x.SizeOnDisk}} </kbd>
+                    <kbd ng_show = "showPreviousSizeOnDisk"> &#9666 {{x.P_SizeOnDisk}} </kbd>
+                    <kbd class="text-right" ng-show="showSizeOnDiskChangePencentage" ng-style="{'background-color' : (x.SizeOnDiskChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
                         {{" " +  x.SizeOnDiskChange|pn_number}}%
-                    </span>
+                    </kbd>
                 </td>
 
                 <!--<td ng-mouseover="TotalGameObjects=x.TotalGameObjects + ' <&#45;&#45;&#45;&#45; ' + x.P_TotalGameObjects" ng-mouseout = "TotalGameObjects=x.TotalGameObjects" ng-init="TotalGameObjects=x.TotalGameObjects" >{{TotalGameObjects}}</td>-->
                 <!--<td ng-style="{'background-color' : (x.TotalGameObjectsChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}"> {{" " +  x.TotalGameObjectsChange}}%</td>-->
-                <td> {{x["SizeOnDisk"]}}</td>
-                <td> {{x.SizeOnDiskChange}}</td>
+                <!--<td> {{x["SizeOnDisk"]}}</td>-->
+                <!--<td> {{x.SizeOnDiskChange}}</td>-->
                 <td> {{x.Verts}}</td>
                 <td> {{x.VertsChange}}</td>
                 <td> {{x.Components}}</td>
