@@ -67,8 +67,11 @@
 
 <body>
 <div ng-app="zone_report">
-    <!--<h3 class="events text-center" >SWAT - Zone Report</h3>-->
+
+
     <div ng-controller="zone_reporter_table" class="table-responsive">
+
+        <h3 class="events text-center" >{{updateTime}} SWAT Zone Report</h3>
 
         <table class="table table-striped table-bordered table-hover table-condensed" >
             <tr>
@@ -241,49 +244,49 @@
                 <td>
                     <kbd class="bg-primary">{{x.SizeOnDisk}} </kbd>
                     <kbd ng_show = "showPreviousSizeOnDisk"> &#9666 {{x.P_SizeOnDisk}} </kbd>
-                    <kbd class="text-right" ng-show="showSizeOnDiskChangePencentage" ng-style="{'background-color' : (x.SizeOnDiskChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
+                    <code class="text-right" ng-show="showSizeOnDiskChangePencentage" ng-style="{'background-color' : (x.SizeOnDiskChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
                         {{" " +  x.SizeOnDiskChange|pn_number}}%
-                    </kbd>
+                    </code>
                 </td>
 
                 <td>
                     <kbd class="bg-primary">{{x.Verts}} </kbd>
                     <kbd ng_show = "showPreviousVerts"> &#9666 {{x.P_Verts}} </kbd>
-                    <kbd class="text-right" ng-show="showVertsChangePencentage" ng-style="{'background-color' : (x.SizeOnDiskChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
+                    <code class="text-right" ng-show="showVertsChangePencentage" ng-style="{'background-color' : (x.VertsChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
                         {{" " +  x.VertsChange|pn_number}}%
-                    </kbd>
+                    </code>
                 </td>
 
                 <td>
                     <kbd class="bg-primary">{{x.Components}} </kbd>
                     <kbd ng_show = "showPreviousComponents"> &#9666 {{x.P_Components}} </kbd>
-                    <kbd class="text-right" ng-show="showComponentsChangePencentage" ng-style="{'background-color' : (x.SizeOnDiskChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
+                    <code class="text-right" ng-show="showComponentsChangePencentage" ng-style="{'background-color' : (x.ComponentsChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
                         {{" " +  x.ComponentsChange|pn_number}}%
-                    </kbd>
+                    </code>
                 </td>
 
                 <td>
                     <kbd class="bg-primary">{{x.PlaymakerEvents}} </kbd>
                     <kbd ng_show = "showPreviousPlaymakerEvents"> &#9666 {{x.P_PlaymakerEvents}} </kbd>
-                    <kbd class="text-right" ng-show="showPlaymakerEventsChangePencentage" ng-style="{'background-color' : (x.SizeOnDiskChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
+                    <code class="text-right" ng-show="showPlaymakerEventsChangePencentage" ng-style="{'background-color' : (x.PlaymakerEventsChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
                         {{" " +  x.PlaymakerEventsChange|pn_number}}%
-                    </kbd>
+                    </code>
                 </td>
 
                 <td>
                     <kbd class="bg-primary">{{x.EnemySpawners}} </kbd>
                     <kbd ng_show = "showPreviousEnemySpawners"> &#9666 {{x.P_EnemySpawners}} </kbd>
-                    <kbd class="text-right" ng-show="showEnemySpawnersChangePencentage" ng-style="{'background-color' : (x.SizeOnDiskChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
+                    <code class="text-right" ng-show="showEnemySpawnersChangePencentage" ng-style="{'background-color' : (x.EnemySpawnersChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
                         {{" " +  x.EnemySpawnersChange|pn_number}}%
-                    </kbd>
+                    </code>
                 </td>
 
                 <td>
                     <kbd class="bg-primary">{{x.Breakables}} </kbd>
                     <kbd ng_show = "showPreviousBreakables"> &#9666 {{x.P_Breakables}} </kbd>
-                    <kbd class="text-right" ng-show="showBreakablesChangePencentage" ng-style="{'background-color' : (x.SizeOnDiskChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
+                    <code class="text-right" ng-show="showBreakablesChangePencentage" ng-style="{'background-color' : (x.BreakablesChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
                         {{" " +  x.BreakablesChange|pn_number}}%
-                    </kbd>
+                    </code>
                 </td>
 
                 <!--<td ng-mouseover="TotalGameObjects=x.TotalGameObjects + ' <&#45;&#45;&#45;&#45; ' + x.P_TotalGameObjects" ng-mouseout = "TotalGameObjects=x.TotalGameObjects" ng-init="TotalGameObjects=x.TotalGameObjects" >{{TotalGameObjects}}</td>-->
@@ -298,8 +301,6 @@
                 <!--<td> {{x.Breakables}}</td>-->
             </tr>
         </table>
-
-        {{db_items}}
     </div>
 
 
