@@ -96,8 +96,6 @@
 
                     <a href="" ng-click="order('TileCountChange')">Oder By Percent Change</a>
                     <span class="sortorder" ng-show="predicate === 'TileCountChange'" ng-class="{reverse:reverse}"></span>
-
-
                 </th>
 
                 <th>
@@ -114,6 +112,9 @@
                         </label><br/>
                     </div>
 
+                    <a href="" ng-click="order('TotalGameObjectsChange')">Oder By Percent Change</a>
+                    <span class="sortorder" ng-show="predicate === 'TotalGameObjectsChange'" ng-class="{reverse:reverse}"></span>
+
                 </th>
 
 
@@ -129,6 +130,9 @@
                             <input type="checkbox" ng-model="showPreviousSizeOnDisk">
                         </label><br/>
                     </div>
+
+                    <a href="" ng-click="order('SizeOnDiskChange')">Oder By Percent Change</a>
+                    <span class="sortorder" ng-show="predicate === 'SizeOnDiskChange'" ng-class="{reverse:reverse}"></span>
 
                 </th>
 
@@ -152,6 +156,9 @@
                         </label><br/>
                     </div>
 
+                    <a href="" ng-click="order('VertsChange')">Oder By Percent Change</a>
+                    <span class="sortorder" ng-show="predicate === 'VertsChange'" ng-class="{reverse:reverse}"></span>
+
                 </th>
 
                 <!--<th>-->
@@ -173,6 +180,8 @@
                         </label><br/>
                     </div>
 
+                    <a href="" ng-click="order('ComponentsChange')">Oder By Percent Change</a>
+                    <span class="sortorder" ng-show="predicate === 'ComponentsChange'" ng-class="{reverse:reverse}"></span>
 
                 </th>
 
@@ -190,6 +199,10 @@
                         </label><br/>
                     </div>
 
+                    <a href="" ng-click="order('PlaymakerEventsChange')">Oder By Percent Change</a>
+                    <span class="sortorder" ng-show="predicate === 'PlaymakerEventsChange'" ng-class="{reverse:reverse}"></span>
+
+
                 </th>
 
 
@@ -206,6 +219,10 @@
                         </label><br/>
                     </div>
 
+                    <a href="" ng-click="order('EnemySpawnersChange')">Oder By Percent Change</a>
+                    <span class="sortorder" ng-show="predicate === 'EnemySpawnersChange'" ng-class="{reverse:reverse}"></span>
+
+
                 </th>
 
                 <th>
@@ -220,6 +237,10 @@
                             <input type="checkbox" ng-model="showPreviousBreakables">
                         </label><br/>
                     </div>
+
+                    <a href="" ng-click="order('BreakablesChange')">Oder By Percent Change</a>
+                    <span class="sortorder" ng-show="predicate === 'BreakablesChange'" ng-class="{reverse:reverse}"></span>
+
 
                 </th>
             </tr>
@@ -272,7 +293,7 @@
 
                 <td>
                     <span>{{x.PlaymakerEvents}} </span>
-                    <kbd ng_show = "showPreviousPlaymakerEvents"> &#9666 {{x.P_PlaymakerEvents}} </kbd>
+                    <span ng_show = "showPreviousPlaymakerEvents"> &#9666 {{x.P_PlaymakerEvents}} </span>
                     <code class="text-right" ng-show="showPlaymakerEventsChangePencentage" ng-style="{'background-color' : (x.PlaymakerEventsChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
                         {{" " +  x.PlaymakerEventsChange|pn_number}}%
                     </code>
@@ -280,7 +301,7 @@
 
                 <td>
                     <span>{{x.EnemySpawners}} </span>
-                    <kbd ng_show = "showPreviousEnemySpawners"> &#9666 {{x.P_EnemySpawners}} </kbd>
+                    <span ng_show = "showPreviousEnemySpawners"> &#9666 {{x.P_EnemySpawners}} </span>
                     <code class="text-right" ng-show="showEnemySpawnersChangePencentage" ng-style="{'background-color' : (x.EnemySpawnersChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
                         {{" " +  x.EnemySpawnersChange|pn_number}}%
                     </code>
