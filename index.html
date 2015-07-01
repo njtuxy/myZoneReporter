@@ -82,33 +82,46 @@
                     <span class="sortorder" ng-show="predicate === 'TileCount'" ng-class="{reverse:reverse}"></span>
 
                     <div class="colorLink" >
-                        <label>Show percentage increase
+                        <label>Show % increase
                             <input type="checkbox" ng-model="showTileCountChangePencentage">
                         </label><br/>
 
-                        <label>Show Previous Value
-                            <input type="checkbox" ng-model="showPreviousTileCountChangePencentage">
+                        <label>Show previous value
+                            <input type="checkbox" ng-model="showPreviousTileCount">
                         </label><br/>
                     </div>
-
 
                 </th>
 
                 <th>
                     <a href="" ng-click="order('TotalGameObjects')">TotalGameObjects</a>
                     <span class="sortorder" ng-show="predicate === 'TotalGameObjects'" ng-class="{reverse:reverse}"></span>
-                </th>
+                    <div class="colorLink" >
+                        <label>Show % increase
+                            <input type="checkbox" ng-model="showTotalGameObjectsChangePencentage">
+                        </label><br/>
 
+                        <label>Show previous value
+                            <input type="checkbox" ng-model="showPreviousTotalGameObjects">
+                        </label><br/>
+                    </div>
 
-                <th>
-                    <a href="" ng-click="order('TotalGameObjectsChange')">TotalGameObjectsChange</a>
-                    <span class="sortorder" ng-show="predicate === 'TotalGameObjectsChange'" ng-class="{reverse:reverse}"></span>
                 </th>
 
 
                 <th>
                     <a href="" ng-click="order('SizeOnDisk')">SizeOnDisk(MB)</a>
                     <span class="sortorder" ng-show="predicate === 'SizeOnDisk(MB)'" ng-class="{reverse:reverse}"></span>
+                    <div class="colorLink" >
+                        <label>Show % increase
+                            <input type="checkbox" ng-model="showSizeOnDiskChangePencentage">
+                        </label><br/>
+
+                        <label>Show previous value
+                            <input type="checkbox" ng-model="showPreviousSizeOnDisk">
+                        </label><br/>
+                    </div>
+
                 </th>
 
 
@@ -152,19 +165,36 @@
 
             <tr ng-repeat="x in db_items | orderBy:predicate:reverse">
 
-                <td>{{x.Zone}}</td>
+                <td class="text-justify">{{x.Zone}}</td>
 
 
-                <td ng-style="{'background-color' : (x.TileCountChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}"
-                    <span ng-hide="showPreviousTileCountChangePencentage">{{x.TileCount}} </span>
-                    <span ng_show = "showPreviousTileCountChangePencentage"> {{x.TileCount}}  -- {{x.P_TileCount}} </span>
-                    <span ng-show="showTileCountChangePencentage">{{" " +  x.TileCountChange}}%</span>
+                <td class="text-justify">
+                    <em ng-hide="showPreviousTileCount">{{x.TileCount}} </em>
+                    <em ng_show = "showPreviousTileCount"> {{x.TileCount}}   &#9666 {{x.P_TileCount}} </em>
+                    <code class="text-right" ng-show="showTileCountChangePencentage" ng-style="{'background-color' : (x.TileCountChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px', 'text-align':'right'}">
+                        {{" " +  x.TileCountChange|pn_number}}%
+                    </code>
+                </td>
+
+                <td>
+                    <em ng-hide="showPreviousTotalGameObjects">{{x.TotalGameObjects}} </em>
+                    <em ng_show = "showPreviousTotalGameObjects"> {{x.TotalGameObjects}}   &#9666 {{x.P_TotalGameObjects}} </em>
+                    <code class="text-right" ng-show="showTotalGameObjectsChangePencentage" ng-style="{'background-color' : (x.TotalGameObjectsChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
+                            {{"  "+ x.TotalGameObjectsChange|pn_number}}%
+                    </code>
                 </td>
 
 
+                <td>
+                    <span ng-hide="showPreviousSizeOnDisk">{{x.SizeOnDisk}} </span>
+                    <span ng_show = "showPreviousSizeOnDisk"> {{x.SizeOnDisk}}   &#9666 {{x.P_SizeOnDisk}} </span>
+                    <span class="text-right" ng-show="showSizeOnDiskChangePencentage" ng-style="{'background-color' : (x.SizeOnDiskChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
+                        {{" " +  x.SizeOnDiskChange|pn_number}}%
+                    </span>
+                </td>
 
-                <td ng-mouseover="TotalGameObjects=x.TotalGameObjects + ' <---- ' + x.P_TotalGameObjects" ng-mouseout = "TotalGameObjects=x.TotalGameObjects" ng-init="TotalGameObjects=x.TotalGameObjects" >{{TotalGameObjects}}</td>
-                <td ng-style="{'background-color' : (x.TotalGameObjectsChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}"> {{" " +  x.TotalGameObjectsChange}}%</td>
+                <!--<td ng-mouseover="TotalGameObjects=x.TotalGameObjects + ' <&#45;&#45;&#45;&#45; ' + x.P_TotalGameObjects" ng-mouseout = "TotalGameObjects=x.TotalGameObjects" ng-init="TotalGameObjects=x.TotalGameObjects" >{{TotalGameObjects}}</td>-->
+                <!--<td ng-style="{'background-color' : (x.TotalGameObjectsChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}"> {{" " +  x.TotalGameObjectsChange}}%</td>-->
                 <td> {{x["SizeOnDisk"]}}</td>
                 <td> {{x.SizeOnDiskChange}}</td>
                 <td> {{x.Verts}}</td>
@@ -175,7 +205,6 @@
                 <td> {{x.Breakables}}</td>
             </tr>
         </table>
-
     </div>
 
 
@@ -206,7 +235,7 @@
     <!--//}-->
     <!--//-->
     <!--//$scope.toggleShowPreviousTileCount = function() {-->
-    <!--//    $scope.showPreviousTileCountChangePencentage = !$scope.showPreviousTileCountChangePencentage;-->
+    <!--//    $scope.showPreviousTileCount = !$scope.showPreviousTileCount;-->
     <!--//}-->
     <!--<td ng-style="{'background-color' : (x.TileCountChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}"> {{" " +  x.TileCountChange}}%</td>-->
     <!--<td>{{x.P_TotalGameObjects}} &#8594 {{x.TotalGameObjects}} </td>-->
