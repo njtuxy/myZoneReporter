@@ -24,39 +24,7 @@
     {
         color: orange !important;
     }
-
-    /*.table tbody tr > td.success {*/
-        /*background-color: #dff0d8 !important;*/
-    /*}*/
-
-    /*.table tbody tr > td.error {*/
-        /*background-color: #f2dede !important;*/
-    /*}*/
-
-    /*.table tbody tr > td.warning {*/
-        /*background-color: #fcf8e3 !important;*/
-    /*}*/
-
-    /*.table tbody tr > td.info {*/
-        /*background-color: #d9edf7 !important;*/
-    /*}*/
-
-    /*.table-hover tbody tr:hover > td.success {*/
-        /*background-color: #d0e9c6 !important;*/
-    /*}*/
-
-    /*.table-hover tbody tr:hover > td.error {*/
-        /*background-color: #ebcccc !important;*/
-    /*}*/
-
-    /*.table-hover tbody tr:hover > td.warning {*/
-        /*background-color: #faf2cc !important;*/
-    /*}*/
-
-    /*.table-hover tbody tr:hover > td.info {*/
-        /*background-color: #c4e3f3 !important;*/
-    /*}*/
-
+    
     table {
         table-layout: fixed;
         word-wrap: break-word;
@@ -146,12 +114,6 @@
 
                 </th>
 
-
-                <!--<th>-->
-                    <!--<a href="" ng-click="order('SizeOnDiskChange')">SizeOnDiskChange</a>-->
-                    <!--<span class="sortorder" ng-show="predicate === 'SizeOnDiskChange'" ng-class="{reverse:reverse}"></span>-->
-                <!--</th>-->
-
                 <th>
                     <a href="" ng-click="order('Verts')">Verts</a>
                     <span class="sortorder" ng-show="predicate === 'Verts'" ng-class="{reverse:reverse}"></span>
@@ -170,11 +132,6 @@
                     <span class="sortorder" ng-show="predicate === 'VertsChange'" ng-class="{reverse:reverse}"></span>
 
                 </th>
-
-                <!--<th>-->
-                    <!--<a href="" ng-click="order('VertsChange')">VertsChange</a>-->
-                    <!--<span class="sortorder" ng-show="predicate === 'VertsChange'" ng-class="{reverse:reverse}"></span>-->
-                <!--</th>-->
 
                 <th>
                     <a href="" ng-click="order('Components')">Components</a>
@@ -324,60 +281,9 @@
                         {{" " +  x.BreakablesChange|pn_number}}%
                     </code>
                 </td>
-
-                <!--<td ng-mouseover="TotalGameObjects=x.TotalGameObjects + ' <&#45;&#45;&#45;&#45; ' + x.P_TotalGameObjects" ng-mouseout = "TotalGameObjects=x.TotalGameObjects" ng-init="TotalGameObjects=x.TotalGameObjects" >{{TotalGameObjects}}</td>-->
-                <!--<td ng-style="{'background-color' : (x.TotalGameObjectsChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}"> {{" " +  x.TotalGameObjectsChange}}%</td>-->
-                <!--<td> {{x["SizeOnDisk"]}}</td>-->
-                <!--<td> {{x.SizeOnDiskChange}}</td>-->
-                <!--<td> {{x.Verts}}</td>-->
-                <!--<td> {{x.VertsChange}}</td>-->
-                <!--<td> {{x.Components}}</td>-->
-                <!--<td> {{x.PlaymakerEvents}}</td>-->
-                <!--<td> {{x.EnemySpawners}}</td>-->
-                <!--<td> {{x.Breakables}}</td>-->
             </tr>
         </table>
     </div>
-
-
-    <!--<script src="http://code.highcharts.com/stock/highstock.src.js"></script>-->
-    <!--<script src="./lib/Underscore.js"></script>-->
-    <!--<script src="./lib/highcharts-ng.js"></script>-->
-    <!--<script src="./lib/highcharts-app.js"></script>-->
-    <!-- Additional files for the Highslide popup effect -->
-    <!--<script type="text/javascript" src="http://www.highcharts.com/media/com_demo/highslide-full.min.js"></script>-->
-    <!--<script type="text/javascript" src="http://www.highcharts.com/media/com_demo/highslide.config.js" charset="utf-8"></script>-->
-    <!--<link rel="stylesheet" type="text/css" href="http://www.highcharts.com/media/com_demo/highslide.css" />-->
-
-    <!--<div ng-controller="mySwatAndroidBuildChart">-->
-    <!--<div class="row">-->
-    <!--&lt;!&ndash; chart area &ndash;&gt;-->
-    <!--<div class="row">-->
-    <!--<div class="row">-->
-    <!--<highchart id="chart2" config="chartConfig" class="span9" ></highchart>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--ng-mouseover="TileCountValue=x.TileCount + ' <-&#45;&#45; ' + x.P_TileCount"-->
-    <!--ng-mouseout = "TileCountValue=x.TileCount"-->
-    <!--ng-init="TileCountValue=x.TileCount" >-->
-    <!--//$scope.toggleTileCountChangePencentage = function() {-->
-    <!--//    $scope.showTileCountChangePencentage = !$scope.showTileCountChangePencentage;-->
-    <!--//}-->
-    <!--//-->
-    <!--//$scope.toggleShowPreviousTileCount = function() {-->
-    <!--//    $scope.showPreviousTileCount = !$scope.showPreviousTileCount;-->
-    <!--//}-->
-    <!--<td ng-style="{'background-color' : (x.TileCountChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}"> {{" " +  x.TileCountChange}}%</td>-->
-    <!--<td>{{x.P_TotalGameObjects}} &#8594 {{x.TotalGameObjects}} </td>-->
-    <!--<div><a ng-click="toggleTileCountChangePencentage()">Show percentage increase</a></div>-->
-    <!--<div><a ng-click="toggleShowPreviousTileCount()">Toggle Previous Value</a></div>-->
-    <!--<th>-->
-    <!--<a href="" ng-click="order('TileCountChange')">TileCountChange</a>-->
-    <!--<span class="sortorder" ng-show="predicate === 'TileCountChange'" ng-class="{reverse:reverse}"></span>-->
-    <!--</th>-->
-    <!--<tr ng-repeat="y in previous_db_items | orderBy:predicate:reverse">-->
 
 
 
