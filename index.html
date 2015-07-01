@@ -24,7 +24,7 @@
     {
         color: orange !important;
     }
-    
+
     table {
         table-layout: fixed;
         word-wrap: break-word;
@@ -40,7 +40,8 @@
 
     <div ng-controller="zone_reporter_table" class="table-responsive">
 
-        <h3 class="events text-center" >SWAT Zone Report</h3>
+        <h3 class="events text-center text-primary" >SWAT Zone Report - Update at {{updateTime}}
+        </h3>
 
         <form>
             <div class="form-group">
@@ -56,7 +57,6 @@
                 <th>
                     <a href="" ng-click="order('Zone')">Zone</a>
                     <span class="sortorder" ng-show="predicate === 'Zone'" ng-class="{reverse:reverse}"></span>
-                    <div class="text-primary">{{updateTime}} </div>
                 </th>
 
                 <th>
