@@ -84,10 +84,6 @@
                     <a href="" ng-click="order('TileCount')">TileCount</a>
                     <span class="sortorder" ng-show="predicate === 'TileCount'" ng-class="{reverse:reverse}"></span>
 
-                    <a href="" ng-click="order('TileCountChange')">TileCountChange</a>
-                    <span class="sortorder" ng-show="predicate === 'TileCountChange'" ng-class="{reverse:reverse}"></span>
-
-
                     <div class="colorLink" >
                         <label>Show % increase
                             <input type="checkbox" ng-model="showTileCountChangePencentage">
@@ -97,6 +93,10 @@
                             <input type="checkbox" ng-model="showPreviousTileCount">
                         </label><br/>
                     </div>
+
+                    <a href="" ng-click="order('TileCountChange')">Oder By Percent Change</a>
+                    <span class="sortorder" ng-show="predicate === 'TileCountChange'" ng-class="{reverse:reverse}"></span>
+
 
                 </th>
 
@@ -306,6 +306,7 @@
                 <!--<td> {{x.Breakables}}</td>-->
             </tr>
         </table>
+        {{db_items}}
     </div>
 
 
