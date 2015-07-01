@@ -133,33 +133,86 @@
                 <th>
                     <a href="" ng-click="order('Verts')">Verts</a>
                     <span class="sortorder" ng-show="predicate === 'Verts'" ng-class="{reverse:reverse}"></span>
+
+                    <div class="colorLink" >
+                        <label>Show % increase
+                            <input type="checkbox" ng-model="showVertsChangePencentage">
+                        </label><br/>
+
+                        <label>Show previous value
+                            <input type="checkbox" ng-model="showPreviousVerts">
+                        </label><br/>
+                    </div>
+
                 </th>
 
-                <th>
-                    <a href="" ng-click="order('VertsChange')">VertsChange</a>
-                    <span class="sortorder" ng-show="predicate === 'VertsChange'" ng-class="{reverse:reverse}"></span>
-                </th>
+                <!--<th>-->
+                    <!--<a href="" ng-click="order('VertsChange')">VertsChange</a>-->
+                    <!--<span class="sortorder" ng-show="predicate === 'VertsChange'" ng-class="{reverse:reverse}"></span>-->
+                <!--</th>-->
 
                 <th>
                     <a href="" ng-click="order('Components')">Components</a>
                     <span class="sortorder" ng-show="predicate === 'Components'" ng-class="{reverse:reverse}"></span>
+
+                    <div class="colorLink" >
+                        <label>Show % increase
+                            <input type="checkbox" ng-model="showComponentsChangePencentage">
+                        </label><br/>
+
+                        <label>Show previous value
+                            <input type="checkbox" ng-model="showPreviousComponents">
+                        </label><br/>
+                    </div>
+
+
                 </th>
 
 
                 <th>
                     <a href="" ng-click="order('PlaymakerEvents')">PlaymakerEvents</a>
                     <span class="sortorder" ng-show="predicate === 'PlaymakerEvents'" ng-class="{reverse:reverse}"></span>
+                    <div class="colorLink" >
+                        <label>Show % increase
+                            <input type="checkbox" ng-model="showPlaymakerEventsChangePencentage">
+                        </label><br/>
+
+                        <label>Show previous value
+                            <input type="checkbox" ng-model="showPreviousPlaymakerEvents">
+                        </label><br/>
+                    </div>
+
                 </th>
 
 
                 <th>
                     <a href="" ng-click="order('EnemySpawners')">EnemySpawners</a>
                     <span class="sortorder" ng-show="predicate === 'EnemySpawners'" ng-class="{reverse:reverse}"></span>
+                    <div class="colorLink" >
+                        <label>Show % increase
+                            <input type="checkbox" ng-model="showEnemySpawnersChangePencentage">
+                        </label><br/>
+
+                        <label>Show previous value
+                            <input type="checkbox" ng-model="showPreviousEnemySpawners">
+                        </label><br/>
+                    </div>
+
                 </th>
 
                 <th>
                     <a href="" ng-click="order('Breakables')">Breakables</a>
                     <span class="sortorder" ng-show="predicate === 'Breakables'" ng-class="{reverse:reverse}"></span>
+                    <div class="colorLink" >
+                        <label>Show % increase
+                            <input type="checkbox" ng-model="showBreakablesChangePencentage">
+                        </label><br/>
+
+                        <label>Show previous value
+                            <input type="checkbox" ng-model="showPreviousBreakables">
+                        </label><br/>
+                    </div>
+
                 </th>
             </tr>
 
@@ -185,7 +238,6 @@
                     </code>
                 </td>
 
-
                 <td>
                     <kbd class="bg-primary">{{x.SizeOnDisk}} </kbd>
                     <kbd ng_show = "showPreviousSizeOnDisk"> &#9666 {{x.P_SizeOnDisk}} </kbd>
@@ -194,16 +246,56 @@
                     </kbd>
                 </td>
 
+                <td>
+                    <kbd class="bg-primary">{{x.Verts}} </kbd>
+                    <kbd ng_show = "showPreviousVerts"> &#9666 {{x.P_Verts}} </kbd>
+                    <kbd class="text-right" ng-show="showVertsChangePencentage" ng-style="{'background-color' : (x.SizeOnDiskChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
+                        {{" " +  x.VertsChange|pn_number}}%
+                    </kbd>
+                </td>
+
+                <td>
+                    <kbd class="bg-primary">{{x.Components}} </kbd>
+                    <kbd ng_show = "showPreviousComponents"> &#9666 {{x.P_Components}} </kbd>
+                    <kbd class="text-right" ng-show="showComponentsChangePencentage" ng-style="{'background-color' : (x.SizeOnDiskChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
+                        {{" " +  x.ComponentsChange|pn_number}}%
+                    </kbd>
+                </td>
+
+                <td>
+                    <kbd class="bg-primary">{{x.PlaymakerEvents}} </kbd>
+                    <kbd ng_show = "showPreviousPlaymakerEvents"> &#9666 {{x.P_PlaymakerEvents}} </kbd>
+                    <kbd class="text-right" ng-show="showPlaymakerEventsChangePencentage" ng-style="{'background-color' : (x.SizeOnDiskChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
+                        {{" " +  x.PlaymakerEventsChange|pn_number}}%
+                    </kbd>
+                </td>
+
+                <td>
+                    <kbd class="bg-primary">{{x.EnemySpawners}} </kbd>
+                    <kbd ng_show = "showPreviousEnemySpawners"> &#9666 {{x.P_EnemySpawners}} </kbd>
+                    <kbd class="text-right" ng-show="showEnemySpawnersChangePencentage" ng-style="{'background-color' : (x.SizeOnDiskChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
+                        {{" " +  x.EnemySpawnersChange|pn_number}}%
+                    </kbd>
+                </td>
+
+                <td>
+                    <kbd class="bg-primary">{{x.Breakables}} </kbd>
+                    <kbd ng_show = "showPreviousBreakables"> &#9666 {{x.P_Breakables}} </kbd>
+                    <kbd class="text-right" ng-show="showBreakablesChangePencentage" ng-style="{'background-color' : (x.SizeOnDiskChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
+                        {{" " +  x.BreakablesChange|pn_number}}%
+                    </kbd>
+                </td>
+
                 <!--<td ng-mouseover="TotalGameObjects=x.TotalGameObjects + ' <&#45;&#45;&#45;&#45; ' + x.P_TotalGameObjects" ng-mouseout = "TotalGameObjects=x.TotalGameObjects" ng-init="TotalGameObjects=x.TotalGameObjects" >{{TotalGameObjects}}</td>-->
                 <!--<td ng-style="{'background-color' : (x.TotalGameObjectsChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}"> {{" " +  x.TotalGameObjectsChange}}%</td>-->
                 <!--<td> {{x["SizeOnDisk"]}}</td>-->
                 <!--<td> {{x.SizeOnDiskChange}}</td>-->
-                <td> {{x.Verts}}</td>
-                <td> {{x.VertsChange}}</td>
-                <td> {{x.Components}}</td>
-                <td> {{x.PlaymakerEvents}}</td>
-                <td> {{x.EnemySpawners}}</td>
-                <td> {{x.Breakables}}</td>
+                <!--<td> {{x.Verts}}</td>-->
+                <!--<td> {{x.VertsChange}}</td>-->
+                <!--<td> {{x.Components}}</td>-->
+                <!--<td> {{x.PlaymakerEvents}}</td>-->
+                <!--<td> {{x.EnemySpawners}}</td>-->
+                <!--<td> {{x.Breakables}}</td>-->
             </tr>
         </table>
     </div>
