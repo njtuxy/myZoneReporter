@@ -23,37 +23,37 @@
         color: orange !important;
     }
 
-    .table tbody tr > td.success {
-        background-color: #dff0d8 !important;
-    }
+    /*.table tbody tr > td.success {*/
+        /*background-color: #dff0d8 !important;*/
+    /*}*/
 
-    .table tbody tr > td.error {
-        background-color: #f2dede !important;
-    }
+    /*.table tbody tr > td.error {*/
+        /*background-color: #f2dede !important;*/
+    /*}*/
 
-    .table tbody tr > td.warning {
-        background-color: #fcf8e3 !important;
-    }
+    /*.table tbody tr > td.warning {*/
+        /*background-color: #fcf8e3 !important;*/
+    /*}*/
 
-    .table tbody tr > td.info {
-        background-color: #d9edf7 !important;
-    }
+    /*.table tbody tr > td.info {*/
+        /*background-color: #d9edf7 !important;*/
+    /*}*/
 
-    .table-hover tbody tr:hover > td.success {
-        background-color: #d0e9c6 !important;
-    }
+    /*.table-hover tbody tr:hover > td.success {*/
+        /*background-color: #d0e9c6 !important;*/
+    /*}*/
 
-    .table-hover tbody tr:hover > td.error {
-        background-color: #ebcccc !important;
-    }
+    /*.table-hover tbody tr:hover > td.error {*/
+        /*background-color: #ebcccc !important;*/
+    /*}*/
 
-    .table-hover tbody tr:hover > td.warning {
-        background-color: #faf2cc !important;
-    }
+    /*.table-hover tbody tr:hover > td.warning {*/
+        /*background-color: #faf2cc !important;*/
+    /*}*/
 
-    .table-hover tbody tr:hover > td.info {
-        background-color: #c4e3f3 !important;
-    }
+    /*.table-hover tbody tr:hover > td.info {*/
+        /*background-color: #c4e3f3 !important;*/
+    /*}*/
 
     table {
         table-layout: fixed;
@@ -84,6 +84,10 @@
                     <a href="" ng-click="order('TileCount')">TileCount</a>
                     <span class="sortorder" ng-show="predicate === 'TileCount'" ng-class="{reverse:reverse}"></span>
 
+                    <a href="" ng-click="order('TileCountChange')">TileCountChange</a>
+                    <span class="sortorder" ng-show="predicate === 'TileCountChange'" ng-class="{reverse:reverse}"></span>
+
+
                     <div class="colorLink" >
                         <label>Show % increase
                             <input type="checkbox" ng-model="showTileCountChangePencentage">
@@ -99,6 +103,7 @@
                 <th>
                     <a href="" ng-click="order('TotalGameObjects')">TotalGameObjects</a>
                     <span class="sortorder" ng-show="predicate === 'TotalGameObjects'" ng-class="{reverse:reverse}"></span>
+
                     <div class="colorLink" >
                         <label>Show % increase
                             <input type="checkbox" ng-model="showTotalGameObjectsChangePencentage">
@@ -225,8 +230,8 @@
 
 
                 <td>
-                    <kbd class="bg-primary" >{{x.TileCount}} </kbd>
-                    <kbd ng_show = "showPreviousTileCount"> &#9666 {{x.P_TileCount}} </kbd>
+                    <span>{{x.TileCount}} </span>
+                    <span ng_show = "showPreviousTileCount"> &#9666 {{x.P_TileCount}} </span>
                     <code class="text-right" ng-show="showTileCountChangePencentage" ng-style="{'background-color' : (x.TileCountChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px', 'text-align':'right'}">
                         {{" " +  x.TileCountChange|pn_number}}%
                     </code>
@@ -234,39 +239,39 @@
 
                 <td>
                     <!--&lt;!&ndash;ng-hide="showPreviousTotalGameObjects"&ndash;&gt;&#9666-->
-                    <kbd class="bg-primary" >{{x.TotalGameObjects}} </kbd>
-                    <kbd ng_show = "showPreviousTotalGameObjects"> &#9666 {{x.P_TotalGameObjects}} </kbd>
+                    <span>{{x.TotalGameObjects}} </span>
+                    <span ng_show = "showPreviousTotalGameObjects"> &#9666 {{x.P_TotalGameObjects}} </span>
                     <code class="text-right" ng-show="showTotalGameObjectsChangePencentage" ng-style="{'background-color' : (x.TotalGameObjectsChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
                             {{"  "+ x.TotalGameObjectsChange|pn_number}}%
                     </code>
                 </td>
 
                 <td>
-                    <kbd class="bg-primary">{{x.SizeOnDisk}} </kbd>
-                    <kbd ng_show = "showPreviousSizeOnDisk"> &#9666 {{x.P_SizeOnDisk}} </kbd>
+                    <span>{{x.SizeOnDisk}} </span>
+                    <span ng_show = "showPreviousSizeOnDisk"> &#9666 {{x.P_SizeOnDisk}} </span>
                     <code class="text-right" ng-show="showSizeOnDiskChangePencentage" ng-style="{'background-color' : (x.SizeOnDiskChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
                         {{" " +  x.SizeOnDiskChange|pn_number}}%
                     </code>
                 </td>
 
                 <td>
-                    <kbd class="bg-primary">{{x.Verts}} </kbd>
-                    <kbd ng_show = "showPreviousVerts"> &#9666 {{x.P_Verts}} </kbd>
+                    <span>{{x.Verts}} </span>
+                    <span ng_show = "showPreviousVerts"> &#9666 {{x.P_Verts}} </span>
                     <code class="text-right" ng-show="showVertsChangePencentage" ng-style="{'background-color' : (x.VertsChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
                         {{" " +  x.VertsChange|pn_number}}%
                     </code>
                 </td>
 
                 <td>
-                    <kbd class="bg-primary">{{x.Components}} </kbd>
-                    <kbd ng_show = "showPreviousComponents"> &#9666 {{x.P_Components}} </kbd>
+                    <span>{{x.Components}} </span>
+                    <span ng_show = "showPreviousComponents"> &#9666 {{x.P_Components}} </span>
                     <code class="text-right" ng-show="showComponentsChangePencentage" ng-style="{'background-color' : (x.ComponentsChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
                         {{" " +  x.ComponentsChange|pn_number}}%
                     </code>
                 </td>
 
                 <td>
-                    <kbd class="bg-primary">{{x.PlaymakerEvents}} </kbd>
+                    <span>{{x.PlaymakerEvents}} </span>
                     <kbd ng_show = "showPreviousPlaymakerEvents"> &#9666 {{x.P_PlaymakerEvents}} </kbd>
                     <code class="text-right" ng-show="showPlaymakerEventsChangePencentage" ng-style="{'background-color' : (x.PlaymakerEventsChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
                         {{" " +  x.PlaymakerEventsChange|pn_number}}%
@@ -274,7 +279,7 @@
                 </td>
 
                 <td>
-                    <kbd class="bg-primary">{{x.EnemySpawners}} </kbd>
+                    <span>{{x.EnemySpawners}} </span>
                     <kbd ng_show = "showPreviousEnemySpawners"> &#9666 {{x.P_EnemySpawners}} </kbd>
                     <code class="text-right" ng-show="showEnemySpawnersChangePencentage" ng-style="{'background-color' : (x.EnemySpawnersChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
                         {{" " +  x.EnemySpawnersChange|pn_number}}%
@@ -282,8 +287,8 @@
                 </td>
 
                 <td>
-                    <kbd class="bg-primary">{{x.Breakables}} </kbd>
-                    <kbd ng_show = "showPreviousBreakables"> &#9666 {{x.P_Breakables}} </kbd>
+                    <span>{{x.Breakables}} </span>
+                    <span ng_show = "showPreviousBreakables"> &#9666 {{x.P_Breakables}} </span>
                     <code class="text-right" ng-show="showBreakablesChangePencentage" ng-style="{'background-color' : (x.BreakablesChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">
                         {{" " +  x.BreakablesChange|pn_number}}%
                     </code>
