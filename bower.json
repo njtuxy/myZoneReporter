@@ -1,0 +1,24 @@
+{
+  "name": "zoneReporter",
+  "version": "0.0.0",
+  "homepage": "https://github.com/njtuxy/myZoneReporter",
+  "authors": [
+    "Yan Xia <yxia@kabaminc.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "jquery": "~2.1.4",    
+    "angular": "~1.4.3",
+    "font-awesome": "~4.3.0",
+    "zone_report_helper": "https://raw.githubusercontent.com/njtuxy/myZoneReporter/master/lib/zone_report_helper.js",    
+    "bootstrap-css-only": "~3.3.4"
+  }
+}

@@ -1,3 +1,5 @@
 .DS_Store
 .idea/
-lib/.DS_Store
+lib/
+node_modules/
+bower_components/
