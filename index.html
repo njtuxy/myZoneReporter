@@ -24,6 +24,18 @@
         color: orange !important;
     }
 
+    .redBg {
+        background-color: #FF6666;
+    }
+
+    .orangeBg {
+        background-color: #FF9900;
+    }
+
+    .greenBg {
+        background-color: #00CC66;
+    }
+
     table {
         table-layout: fixed;
         word-wrap: break-word;
@@ -41,6 +53,9 @@
     <div ng-controller="request_controller" class="table-responsive">
         <h3 class="events text-center text-primary" >SWAT Zone Report - Update at {{updateTime}}</h3>
 
+        <div>
+            test : {{test}}
+        </div>
         <form>
             <div class="form-group">
                 <div class="input-group">
@@ -50,7 +65,8 @@
             </div>
         </form>
 
-        <table class="table table-striped table-bordered table-hover table-condensed" >
+        <!--table-striped -->
+        <table class="table table-bordered table-hover table-condensed" >
             <tr>
                 <th>
                     <a href="" ng-click="order('Zone')">Zone</a>
@@ -221,7 +237,8 @@
             <tr ng-repeat="x in result_for_table | orderBy:predicate:reverse | filter:searchAZone">
 
                 <td class="text-justify">{{x[0]['Zone']}}</td>
-                <td>
+
+                <td  ng-class="{'greenBg': x[0].TileCount <= 400 , 'orangeBg': ((x[0].TileCount > 400) && (x[0].TileCount < 450)), 'redBg': x[0].TileCount >= 450} ">
                     <span ng-show="x[0] !== undefined">{{x[0].TileCount}}</span>
                     <span ng-show="x[1] !== undefined">&#9666  {{x[1].TileCount}}</span>
                     <span ng-show="x[2] !== undefined">&#9666  {{x[2].TileCount}}</span>
@@ -232,7 +249,7 @@
                     <!--</code>-->
                 </td>
 
-                <td>
+                <td class="tableCellColor">
                     <span ng-show="x[0] !== undefined">{{x[0].TotalGameObjects}}</span>
                     <span ng-show="x[1] !== undefined">&#9666  {{x[1].TotalGameObjects}}</span>
                     <span ng-show="x[2] !== undefined">&#9666  {{x[2].TotalGameObjects}}</span>
@@ -248,7 +265,7 @@
                     <span ng-show="x[4] !== undefined">&#9666  {{x[4].SizeOnDisk}}</span>
                 </td>
 
-                <td>
+                <td ng-class="{'redBg': x[0].Verts >= 80000, 'orangeBg': ((x[0].Verts > 75000) && (x[0].Verts < 80000)), 'greenBg': x[0].Verts <= 75000}">
                     <span ng-show="x[0] !== undefined">{{x[0].Verts}}</span>
                     <span ng-show="x[1] !== undefined">&#9666  {{x[1].Verts}}</span>
                     <span ng-show="x[2] !== undefined">&#9666  {{x[2].Verts}}</span>
