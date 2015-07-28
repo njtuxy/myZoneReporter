@@ -51,6 +51,8 @@
 <body>
 <div ng-app="zone_report">
 
+    <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+
     <div ng-controller="request_controller" >
 
         <div ng-hide="result_for_table.length > 0">
@@ -216,10 +218,29 @@
                 <td  ng-class="{'greenBg': x[0].TileCount <= 400 , 'orangeBg': ((x[0].TileCount > 400) && (x[0].TileCount < 450)), 'redBg': x[0].TileCount >= 450} ">
                     <span ng-show="x[0] !== undefined">{{x[0].TileCount}}</span>
                     <div ng_show = "showPreviousTileCount">
-                        <span ng-show="x[1] !== undefined">&#9666  {{x[1].TileCount}}</span>
-                        <span ng-show="x[2] !== undefined">&#9666  {{x[2].TileCount}}</span>
-                        <span ng-show="x[3] !== undefined">&#9666  {{x[3].TileCount}}</span>
-                        <span ng-show="x[4] !== undefined">&#9666  {{x[4].TileCount}}</span>
+                        <table class="table table-condensed">
+
+                            <tr>
+                                <td class="active"> <span ng-show="x[1] !== undefined">{{x[1].TileCount}}  {{x[1]|getDate}}</span> </td>
+                            </tr>
+
+                            <tr>
+                                <td class="active"> <span ng-show="x[2] !== undefined">{{x[2].TileCount}}</span> </td>
+                            </tr>
+
+                            <tr>
+                                <td class="active"> <span ng-show="x[3] !== undefined">{{x[3].TileCount}}</span> </td>
+                            </tr>
+
+                            <tr>
+                                <td class="active"> <span ng-show="x[4] !== undefined">{{x[4].TileCount}}</span> </td>
+                            </tr>
+
+                            <tr>
+                                <td class="active"> <span ng-show="x[5] !== undefined">{{x[5].TileCount}}</span> </td>
+                            </tr>
+
+                        </table>
                     </div>
                     <!--<code class="text-right" ng-show="showTileCountChangePencentage" ng-style="{'background-color' : (x.TileCountChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px', 'text-align':'right'}">-->
                     <!--{{" " +  x.TileCountChange|pn_number}}%-->
@@ -229,10 +250,27 @@
                 <td class="tableCellColor">
                     <span ng-show="x[0] !== undefined">{{x[0].TotalGameObjects}}</span>
                     <div ng_show = "showPreviousTotalGameObjects">
-                        <span ng-show="x[1] !== undefined">&#9666  {{x[1].TotalGameObjects}}</span>
-                        <span ng-show="x[2] !== undefined">&#9666  {{x[2].TotalGameObjects}}</span>
-                        <span ng-show="x[3] !== undefined">&#9666  {{x[3].TotalGameObjects}}</span>
-                        <span ng-show="x[4] !== undefined">&#9666  {{x[4].TotalGameObjects}}</span>
+                        <table>
+                            <tr>
+                                <td> <span ng-show="x[1] !== undefined">{{x[1].TotalGameObjects}}  {{x[1]|getDate}}</span> </td>
+                            </tr>
+                            <tr>
+                                <td> <span ng-show="x[2] !== undefined">{{x[2].TotalGameObjects}}  {{x[1]|getDate}}</span> </td>
+                            </tr>
+
+                            <tr>
+                                <td> <span ng-show="x[3] !== undefined">{{x[3].TotalGameObjects}}  {{x[1]|getDate}}</span> </td>
+                            </tr>
+
+                            <tr>
+                                <td> <span ng-show="x[4] !== undefined">{{x[4].TotalGameObjects}}  {{x[1]|getDate}}</span> </td>
+                            </tr>
+
+                            <tr>
+                                <td> <span ng-show="x[5] !== undefined">{{x[5].TotalGameObjects}}  {{x[1]|getDate}}</span> </td>
+                            </tr>
+
+                        </table>
                     </div>
                 </td>
 
