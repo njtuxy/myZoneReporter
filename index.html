@@ -1,47 +1,47 @@
 <!doctype html>
 <head>
--<script src="http://code.jquery.com/jquery-2.1.4.min.js" xmlns="http://www.w3.org/1999/html"></script>
--<!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
--<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootswatch/3.2.0/sandstone/bootstrap.min.css">
--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
--<script src="./lib/zone_report_helper.js"></script>
+    -<script src="http://code.jquery.com/jquery-2.1.4.min.js" xmlns="http://www.w3.org/1999/html"></script>
+    -<!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+    -<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    -<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    -<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootswatch/3.2.0/sandstone/bootstrap.min.css">
+    -<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    -<script src="./lib/zone_report_helper.js"></script>
 
 
-<style type="text/css">
-    .sortorder:after {
-        content: '\25b2';
-    }
+    <style type="text/css">
+        .sortorder:after {
+            content: '\25b2';
+        }
 
-    .sortorder.reverse:after
-    {
-        content: '\25bc';
-    }
+        .sortorder.reverse:after
+        {
+            content: '\25bc';
+        }
 
-    .colorLink a
-    {
-        color: orange !important;
-    }
+        .colorLink a
+        {
+            color: orange !important;
+        }
 
-    .redBg {
-        background-color: #FF6666;
-    }
+        .redBg {
+            background-color: #FF6666;
+        }
 
-    .orangeBg {
-        background-color: #FF9900;
-    }
+        .orangeBg {
+            background-color: #ffc529;
+        }
 
-    .greenBg {
-        background-color: #00CC66;
-    }
+        .greenBg {
+            background-color: #96cca6;
+        }
 
-    table {
-        table-layout: fixed;
-        word-wrap: break-word;
-    }
+        table {
+            table-layout: fixed;
+            word-wrap: break-word;
+        }
 
-</style>
+    </style>
 
 </head>
 
@@ -53,9 +53,6 @@
     <div ng-controller="request_controller" class="table-responsive">
         <h3 class="events text-center text-primary" >SWAT Zone Report - Update at {{updateTime}}</h3>
 
-        <div>
-            test : {{test}}
-        </div>
         <form>
             <div class="form-group">
                 <div class="input-group">
@@ -80,15 +77,16 @@
                     <span class="sortorder" ng-show="predicate === 'TileCount'" ng-class="{reverse:reverse}"></span>
 
                     <div class="colorLink" >
-                        <label>Show previous value
+                        <label>Show previous values
                             <input type="checkbox" ng-model="showPreviousTileCount">
                         </label><br/>
-                        <label>Show % increase
-                            <input type="checkbox" ng-model="showTileCountChangePencentage">
-                        </label><br/>
+
+                        <!--<label>Show % increase-->
+                            <!--<input type="checkbox" ng-model="showTileCountChangePencentage">-->
+                        <!--</label><br/>-->
                     </div>
 
-                    <a class="text-primary" href="" ng-click="order('TileCountChange')">Oder By % Change</a>
+                    <!--<a class="text-primary" href="" ng-click="order('TileCountChange')">Oder By % Change</a>-->
                     <span class="sortorder" ng-show="predicate === 'TileCountChange'" ng-class="{reverse:reverse}"></span>
                 </th>
 
@@ -97,16 +95,10 @@
                     <span class="sortorder" ng-show="predicate === 'TotalGameObjects'" ng-class="{reverse:reverse}"></span>
 
                     <div class="colorLink" >
-                        <label>Show previous value
+                        <label>Show previous values
                             <input type="checkbox" ng-model="showPreviousTotalGameObjects">
                         </label><br/>
-
-                        <label>Show % increase
-                            <input type="checkbox" ng-model="showTotalGameObjectsChangePencentage">
-                        </label><br/>
                     </div>
-
-                    <a class="text-primary" href="" ng-click="order('TotalGameObjectsChange')">Oder By % Change</a>
                     <span class="sortorder" ng-show="predicate === 'TotalGameObjectsChange'" ng-class="{reverse:reverse}"></span>
 
                 </th>
@@ -116,16 +108,10 @@
                     <a href="" ng-click="order('SizeOnDisk')">SizeOnDisk(MB)</a>
                     <span class="sortorder" ng-show="predicate === 'SizeOnDisk(MB)'" ng-class="{reverse:reverse}"></span>
                     <div class="colorLink" >
-                        <label>Show % increase
-                            <input type="checkbox" ng-model="showSizeOnDiskChangePencentage">
-                        </label><br/>
-
-                        <label>Show previous value
+                        <label>Show previous values
                             <input type="checkbox" ng-model="showPreviousSizeOnDisk">
                         </label><br/>
                     </div>
-
-                    <a class="text-primary" href="" ng-click="order('SizeOnDiskChange')">Oder By % Change</a>
                     <span class="sortorder" ng-show="predicate === 'SizeOnDiskChange'" ng-class="{reverse:reverse}"></span>
 
                 </th>
@@ -135,16 +121,11 @@
                     <span class="sortorder" ng-show="predicate === 'Verts'" ng-class="{reverse:reverse}"></span>
 
                     <div class="colorLink" >
-                        <label>Show % increase
-                            <input type="checkbox" ng-model="showVertsChangePencentage">
-                        </label><br/>
-
-                        <label>Show previous value
+                        <label>Show previous values
                             <input type="checkbox" ng-model="showPreviousVerts">
                         </label><br/>
                     </div>
 
-                    <a class="text-primary" href="" ng-click="order('VertsChange')">Oder By % Change</a>
                     <span class="sortorder" ng-show="predicate === 'VertsChange'" ng-class="{reverse:reverse}"></span>
 
                 </th>
@@ -154,16 +135,11 @@
                     <span class="sortorder" ng-show="predicate === 'Components'" ng-class="{reverse:reverse}"></span>
 
                     <div class="colorLink" >
-                        <label>Show % increase
-                            <input type="checkbox" ng-model="showComponentsChangePencentage">
-                        </label><br/>
-
-                        <label>Show previous value
+                        <label>Show previous values
                             <input type="checkbox" ng-model="showPreviousComponents">
                         </label><br/>
                     </div>
 
-                    <a class="text-primary" href="" ng-click="order('ComponentsChange')">Oder By % Change</a>
                     <span class="sortorder" ng-show="predicate === 'ComponentsChange'" ng-class="{reverse:reverse}"></span>
 
                 </th>
@@ -171,24 +147,26 @@
 
 
                 <th>
-                    <a href="" ng-click="order('PlaymakerEvents')">PlaymakerObjects</a>
+                    <a href="" ng-click="order('PlaymakerObjects')">PlaymakerObjects</a>
+                    <span class="sortorder" ng-show="predicate === 'PlaymakerObjects'" ng-class="{reverse:reverse}"></span>
+                    <div class="colorLink" >
+                        <label>Show previous values
+                            <input type="checkbox" ng-model="showPreviousPlaymakerObjects">
+                        </label><br/>
+                    </div>
 
+                    <span class="sortorder" ng-show="predicate === 'PlaymakerObjects'" ng-class="{reverse:reverse}"></span>
                 </th>
 
                 <th>
                     <a href="" ng-click="order('PlaymakerEvents')">PlaymakerEvents</a>
                     <span class="sortorder" ng-show="predicate === 'PlaymakerEvents'" ng-class="{reverse:reverse}"></span>
                     <div class="colorLink" >
-                        <label>Show % increase
-                            <input type="checkbox" ng-model="showPlaymakerEventsChangePencentage">
-                        </label><br/>
-
                         <label>Show previous value
                             <input type="checkbox" ng-model="showPreviousPlaymakerEvents">
                         </label><br/>
                     </div>
 
-                    <a class="text-primary" href="" ng-click="order('PlaymakerEventsChange')">Oder By % Change</a>
                     <span class="sortorder" ng-show="predicate === 'PlaymakerEventsChange'" ng-class="{reverse:reverse}"></span>
 
 
@@ -199,16 +177,11 @@
                     <a href="" ng-click="order('EnemySpawners')">EnemySpawners</a>
                     <span class="sortorder" ng-show="predicate === 'EnemySpawners'" ng-class="{reverse:reverse}"></span>
                     <div class="colorLink" >
-                        <label>Show % increase
-                            <input type="checkbox" ng-model="showEnemySpawnersChangePencentage">
-                        </label><br/>
-
                         <label>Show previous value
                             <input type="checkbox" ng-model="showPreviousEnemySpawners">
                         </label><br/>
                     </div>
 
-                    <a class="text-primary" href="" ng-click="order('EnemySpawnersChange')">Oder By % Change</a>
                     <span class="sortorder" ng-show="predicate === 'EnemySpawnersChange'" ng-class="{reverse:reverse}"></span>
 
 
@@ -218,16 +191,11 @@
                     <a href="" ng-click="order('Breakables')">Breakables</a>
                     <span class="sortorder" ng-show="predicate === 'Breakables'" ng-class="{reverse:reverse}"></span>
                     <div class="colorLink" >
-                        <label>Show % increase
-                            <input type="checkbox" ng-model="showBreakablesChangePencentage">
-                        </label><br/>
-
                         <label>Show previous value
                             <input type="checkbox" ng-model="showPreviousBreakables">
                         </label><br/>
                     </div>
 
-                    <a class="text-primary" href="" ng-click="order('BreakablesChange')">Oder By % Change</a>
                     <span class="sortorder" ng-show="predicate === 'BreakablesChange'" ng-class="{reverse:reverse}"></span>
 
 
@@ -240,128 +208,151 @@
 
                 <td  ng-class="{'greenBg': x[0].TileCount <= 400 , 'orangeBg': ((x[0].TileCount > 400) && (x[0].TileCount < 450)), 'redBg': x[0].TileCount >= 450} ">
                     <span ng-show="x[0] !== undefined">{{x[0].TileCount}}</span>
-                    <span ng-show="x[1] !== undefined">&#9666  {{x[1].TileCount}}</span>
-                    <span ng-show="x[2] !== undefined">&#9666  {{x[2].TileCount}}</span>
-                    <span ng-show="x[3] !== undefined">&#9666  {{x[3].TileCount}}</span>
-                    <span ng-show="x[4] !== undefined">&#9666  {{x[4].TileCount}}</span>
+                    <div ng_show = "showPreviousTileCount">
+                        <span ng-show="x[1] !== undefined">&#9666  {{x[1].TileCount}}</span>
+                        <span ng-show="x[2] !== undefined">&#9666  {{x[2].TileCount}}</span>
+                        <span ng-show="x[3] !== undefined">&#9666  {{x[3].TileCount}}</span>
+                        <span ng-show="x[4] !== undefined">&#9666  {{x[4].TileCount}}</span>
+                    </div>
                     <!--<code class="text-right" ng-show="showTileCountChangePencentage" ng-style="{'background-color' : (x.TileCountChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px', 'text-align':'right'}">-->
-                        <!--{{" " +  x.TileCountChange|pn_number}}%-->
+                    <!--{{" " +  x.TileCountChange|pn_number}}%-->
                     <!--</code>-->
                 </td>
 
                 <td class="tableCellColor">
                     <span ng-show="x[0] !== undefined">{{x[0].TotalGameObjects}}</span>
-                    <span ng-show="x[1] !== undefined">&#9666  {{x[1].TotalGameObjects}}</span>
-                    <span ng-show="x[2] !== undefined">&#9666  {{x[2].TotalGameObjects}}</span>
-                    <span ng-show="x[3] !== undefined">&#9666  {{x[3].TotalGameObjects}}</span>
-                    <span ng-show="x[4] !== undefined">&#9666  {{x[4].TotalGameObjects}}</span>
+                    <div ng_show = "showPreviousTotalGameObjects">
+                        <span ng-show="x[1] !== undefined">&#9666  {{x[1].TotalGameObjects}}</span>
+                        <span ng-show="x[2] !== undefined">&#9666  {{x[2].TotalGameObjects}}</span>
+                        <span ng-show="x[3] !== undefined">&#9666  {{x[3].TotalGameObjects}}</span>
+                        <span ng-show="x[4] !== undefined">&#9666  {{x[4].TotalGameObjects}}</span>
+                    </div>
                 </td>
 
                 <td>
                     <span ng-show="x[0] !== undefined">{{x[0].SizeOnDisk}}</span>
-                    <span ng-show="x[1] !== undefined">&#9666  {{x[1].SizeOnDisk}}</span>
-                    <span ng-show="x[2] !== undefined">&#9666  {{x[2].SizeOnDisk}}</span>
-                    <span ng-show="x[3] !== undefined">&#9666  {{x[3].SizeOnDisk}}</span>
-                    <span ng-show="x[4] !== undefined">&#9666  {{x[4].SizeOnDisk}}</span>
+                    <div ng_show = "showPreviousSizeOnDisk">
+                        <span ng-show="x[1] !== undefined">&#9666  {{x[1].SizeOnDisk}}</span>
+                        <span ng-show="x[2] !== undefined">&#9666  {{x[2].SizeOnDisk}}</span>
+                        <span ng-show="x[3] !== undefined">&#9666  {{x[3].SizeOnDisk}}</span>
+                        <span ng-show="x[4] !== undefined">&#9666  {{x[4].SizeOnDisk}}</span>
+                    </div>
                 </td>
 
                 <td ng-class="{'redBg': x[0].Verts >= 80000, 'orangeBg': ((x[0].Verts > 75000) && (x[0].Verts < 80000)), 'greenBg': x[0].Verts <= 75000}">
                     <span ng-show="x[0] !== undefined">{{x[0].Verts}}</span>
-                    <span ng-show="x[1] !== undefined">&#9666  {{x[1].Verts}}</span>
-                    <span ng-show="x[2] !== undefined">&#9666  {{x[2].Verts}}</span>
-                    <span ng-show="x[3] !== undefined">&#9666  {{x[3].Verts}}</span>
-                    <span ng-show="x[4] !== undefined">&#9666  {{x[4].Verts}}</span>
+                    <div ng_show = "showPreviousVerts">
+                        <span ng-show="x[1] !== undefined">&#9666  {{x[1].Verts}}</span>
+                        <span ng-show="x[2] !== undefined">&#9666  {{x[2].Verts}}</span>
+                        <span ng-show="x[3] !== undefined">&#9666  {{x[3].Verts}}</span>
+                        <span ng-show="x[4] !== undefined">&#9666  {{x[4].Verts}}</span>
+                    </div>
+
                 </td>
 
                 <td>
                     <span ng-show="x[0] !== undefined">{{x[0].Components}}</span>
-                    <span ng-show="x[1] !== undefined">&#9666  {{x[1].Components}}</span>
-                    <span ng-show="x[2] !== undefined">&#9666  {{x[2].Components}}</span>
-                    <span ng-show="x[3] !== undefined">&#9666  {{x[3].Components}}</span>
-                    <span ng-show="x[4] !== undefined">&#9666  {{x[4].Components}}</span>
+                    <div ng_show = "showPreviousComponents">
+                        <span ng-show="x[1] !== undefined">&#9666  {{x[1].Components}}</span>
+                        <span ng-show="x[2] !== undefined">&#9666  {{x[2].Components}}</span>
+                        <span ng-show="x[3] !== undefined">&#9666  {{x[3].Components}}</span>
+                        <span ng-show="x[4] !== undefined">&#9666  {{x[4].Components}}</span>
+                    </div>
+
                 </td>
 
                 <td>
                     <span ng-show="x[0] !== undefined">{{x[0].PlaymakerObjects}}</span>
-                    <span ng-show="x[1] !== undefined">&#9666  {{x[1].PlaymakerObjects}}</span>
-                    <span ng-show="x[2] !== undefined">&#9666  {{x[2].PlaymakerObjects}}</span>
-                    <span ng-show="x[3] !== undefined">&#9666  {{x[3].PlaymakerObjects}}</span>
-                    <span ng-show="x[4] !== undefined">&#9666  {{x[4].PlaymakerObjects}}</span>
+                    <div ng_show = "showPreviousPlaymakerObjects">
+                        <span ng-show="x[1] !== undefined">&#9666  {{x[1].PlaymakerObjects}}</span>
+                        <span ng-show="x[2] !== undefined">&#9666  {{x[2].PlaymakerObjects}}</span>
+                        <span ng-show="x[3] !== undefined">&#9666  {{x[3].PlaymakerObjects}}</span>
+                        <span ng-show="x[4] !== undefined">&#9666  {{x[4].PlaymakerObjects}}</span>
+                    </div>
+
                 </td>
 
                 <td>
                     <span ng-show="x[0] !== undefined">{{x[0].PlaymakerEvents}}</span>
-                    <span ng-show="x[1] !== undefined">&#9666  {{x[1].PlaymakerEvents}}</span>
-                    <span ng-show="x[2] !== undefined">&#9666  {{x[2].PlaymakerEvents}}</span>
-                    <span ng-show="x[3] !== undefined">&#9666  {{x[3].PlaymakerEvents}}</span>
-                    <span ng-show="x[4] !== undefined">&#9666  {{x[4].PlaymakerEvents}}</span>
+                    <div ng_show = "showPreviousPlaymakerEvents">
+                        <span ng-show="x[1] !== undefined">&#9666  {{x[1].PlaymakerEvents}}</span>
+                        <span ng-show="x[2] !== undefined">&#9666  {{x[2].PlaymakerEvents}}</span>
+                        <span ng-show="x[3] !== undefined">&#9666  {{x[3].PlaymakerEvents}}</span>
+                        <span ng-show="x[4] !== undefined">&#9666  {{x[4].PlaymakerEvents}}</span>
+                    </div>
                 </td>
 
 
                 <td>
                     <span ng-show="x[0] !== undefined">{{x[0].EnemySpawners}}</span>
-                    <span ng-show="x[1] !== undefined">&#9666  {{x[1].EnemySpawners}}</span>
-                    <span ng-show="x[2] !== undefined">&#9666  {{x[2].EnemySpawners}}</span>
-                    <span ng-show="x[3] !== undefined">&#9666  {{x[3].EnemySpawners}}</span>
-                    <span ng-show="x[4] !== undefined">&#9666  {{x[4].EnemySpawners}}</span>
+                    <div ng_show = "showPreviousEnemySpawners">
+                        <span ng-show="x[1] !== undefined">&#9666  {{x[1].EnemySpawners}}</span>
+                        <span ng-show="x[2] !== undefined">&#9666  {{x[2].EnemySpawners}}</span>
+                        <span ng-show="x[3] !== undefined">&#9666  {{x[3].EnemySpawners}}</span>
+                        <span ng-show="x[4] !== undefined">&#9666  {{x[4].EnemySpawners}}</span>
+                    </div>
                 </td>
 
                 <td>
+
                     <span ng-show="x[0] !== undefined">{{x[0].Breakables}}</span>
-                    <span ng-show="x[1] !== undefined">&#9666  {{x[1].Breakables}}</span>
-                    <span ng-show="x[2] !== undefined">&#9666  {{x[2].Breakables}}</span>
-                    <span ng-show="x[3] !== undefined">&#9666  {{x[3].Breakables}}</span>
-                    <span ng-show="x[4] !== undefined">&#9666  {{x[4].Breakables}}</span>
+                    <div ng_show = "showPreviousBreakables">
+                        <span ng-show="x[1] !== undefined">&#9666  {{x[1].Breakables}}</span>
+                        <span ng-show="x[2] !== undefined">&#9666  {{x[2].Breakables}}</span>
+                        <span ng-show="x[3] !== undefined">&#9666  {{x[3].Breakables}}</span>
+                        <span ng-show="x[4] !== undefined">&#9666  {{x[4].Breakables}}</span>
+
+                    </div>
                 </td>
 
                 <!--<td>-->
-                    <!--<span>{{x.SizeOnDisk}} </span>-->
-                    <!--<span ng_show = "showPreviousSizeOnDisk"> &#9666 {{x.P_SizeOnDisk}} </span>-->
-                    <!--<code class="text-right" ng-show="showSizeOnDiskChangePencentage" ng-style="{'background-color' : (x.SizeOnDiskChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">-->
-                        <!--{{" " +  x.SizeOnDiskChange|pn_number}}%-->
-                    <!--</code>-->
+                <!--<span>{{x.SizeOnDisk}} </span>-->
+
+                <!--<code class="text-right" ng-show="showSizeOnDiskChangePencentage" ng-style="{'background-color' : (x.SizeOnDiskChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">-->
+                <!--{{" " +  x.SizeOnDiskChange|pn_number}}%-->
+                <!--</code>-->
                 <!--</td>-->
 
                 <!--<td>-->
-                    <!--<span>{{x.Verts}} </span>-->
-                    <!--<span ng_show = "showPreviousVerts"> &#9666 {{x.P_Verts}} </span>-->
-                    <!--<code class="text-right" ng-show="showVertsChangePencentage" ng-style="{'background-color' : (x.VertsChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">-->
-                        <!--{{" " +  x.VertsChange|pn_number}}%-->
-                    <!--</code>-->
+                <!--<span>{{x.Verts}} </span>-->
+                <!--<span ng_show = "showPreviousVerts"> &#9666 {{x.P_Verts}} </span>-->
+                <!--<code class="text-right" ng-show="showVertsChangePencentage" ng-style="{'background-color' : (x.VertsChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">-->
+                <!--{{" " +  x.VertsChange|pn_number}}%-->
+                <!--</code>-->
                 <!--</td>-->
 
                 <!--<td>-->
-                    <!--<span>{{x.Components}} </span>-->
-                    <!--<span ng_show = "showPreviousComponents"> &#9666 {{x.P_Components}} </span>-->
-                    <!--<code class="text-right" ng-show="showComponentsChangePencentage" ng-style="{'background-color' : (x.ComponentsChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">-->
-                        <!--{{" " +  x.ComponentsChange|pn_number}}%-->
-                    <!--</code>-->
+                <!--<span>{{x.Components}} </span>-->
+                <!--<span ng_show = "showPreviousComponents"> &#9666 {{x.P_Components}} </span>-->
+                <!--<code class="text-right" ng-show="showComponentsChangePencentage" ng-style="{'background-color' : (x.ComponentsChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">-->
+                <!--{{" " +  x.ComponentsChange|pn_number}}%-->
+                <!--</code>-->
                 <!--</td>-->
 
                 <!--<td>-->
-                    <!--<span>{{x.PlaymakerEvents}} </span>-->
-                    <!--<span ng_show = "showPreviousPlaymakerEvents"> &#9666 {{x.P_PlaymakerEvents}} </span>-->
-                    <!--<code class="text-right" ng-show="showPlaymakerEventsChangePencentage" ng-style="{'background-color' : (x.PlaymakerEventsChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">-->
-                        <!--{{" " +  x.PlaymakerEventsChange|pn_number}}%-->
-                    <!--</code>-->
+                <!--<span>{{x.PlaymakerEvents}} </span>-->
+                <!--<span ng_show = "showPreviousPlaymakerEvents"> &#9666 {{x.P_PlaymakerEvents}} </span>-->
+                <!--<code class="text-right" ng-show="showPlaymakerEventsChangePencentage" ng-style="{'background-color' : (x.PlaymakerEventsChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">-->
+                <!--{{" " +  x.PlaymakerEventsChange|pn_number}}%-->
+                <!--</code>-->
                 <!--</td>-->
 
                 <!--<td>-->
-                    <!--<span>{{x.EnemySpawners}} </span>-->
-                    <!--<span ng_show = "showPreviousEnemySpawners"> &#9666 {{x.P_EnemySpawners}} </span>-->
-                    <!--<code class="text-right" ng-show="showEnemySpawnersChangePencentage" ng-style="{'background-color' : (x.EnemySpawnersChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">-->
-                        <!--{{" " +  x.EnemySpawnersChange|pn_number}}%-->
-                    <!--</code>-->
+                <!--<span>{{x.EnemySpawners}} </span>-->
+                <!--<span ng_show = "showPreviousEnemySpawners"> &#9666 {{x.P_EnemySpawners}} </span>-->
+                <!--<code class="text-right" ng-show="showEnemySpawnersChangePencentage" ng-style="{'background-color' : (x.EnemySpawnersChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">-->
+                <!--{{" " +  x.EnemySpawnersChange|pn_number}}%-->
+                <!--</code>-->
                 <!--</td>-->
 
                 <!--<td>-->
-                    <!--<span>{{x.Breakables}} </span>-->
-                    <!--<span ng_show = "showPreviousBreakables"> &#9666 {{x.P_Breakables}} </span>-->
-                    <!--<code class="text-right" ng-show="showBreakablesChangePencentage" ng-style="{'background-color' : (x.BreakablesChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">-->
-                        <!--{{" " +  x.BreakablesChange|pn_number}}%-->
-                    <!--</code>-->
+                <!--<span>{{x.Breakables}} </span>-->
+                <!--<span ng_show = "showPreviousBreakables"> &#9666 {{x.P_Breakables}} </span>-->
+                <!--<code class="text-right" ng-show="showBreakablesChangePencentage" ng-style="{'background-color' : (x.BreakablesChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">-->
+                <!--{{" " +  x.BreakablesChange|pn_number}}%-->
+                <!--</code>-->
                 <!--</td>-->
-            <!--</tr>-->
+                <!--</tr>-->
         </table>
     </div>
 
