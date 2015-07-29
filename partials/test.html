@@ -1,0 +1,9 @@
+<span ng-show="sameZonesFromDifferentTime[0]['TileCount'] !== undefined">{{sameZonesFromDifferentTime[0]['TileCount']}}</span>
+
+<div ng_show = "showPreviousTotalGameObjects">
+    <table ng-repeat="zone in sameZonesFromDifferentTime">
+        <tr>
+            <td> <span ng-show="zone !== undefined">{{zone['TileCount']}}</span> </td>
+        </tr>
+    </table>
+</div>
