@@ -211,209 +211,60 @@
                     </th>
                 </tr>
 
-                <!--| orderObjectBy:predicate:reverse | filter:searchAZone"-->
 
-                <tr ng-repeat="sameZonesFromDifferentTime in result_for_table ">
+
+                <tr ng-repeat="sameZonesFromDifferentTime in result_for_table | orderObjectBy:predicate:reverse | filter:searchAZone">
 
                     <td class="text-justify">{{sameZonesFromDifferentTime[0]['Zone']}}</td>
 
+                    <td ng-repeat="zone_property in zone_properties">
 
-                    <td ng-repeat="property in zone_properties">
-
-                        <span ng-hide="showPreviousTileCount">{{sameZonesFromDifferentTime[0][property]}}</span>
-                        
-                        <div ng_show = "showPreviousTileCount">
-                            <table ng-repeat="zone in sameZonesFromDifferentTime">
-                                <tr>
-                                    <td> <span ng-show="zone !== undefined">{{zone[property]}}</span> </td>
-                                </tr>
-                            </table>
+                        <div ng-if = "zone_property === 'TileCount'" ng-init="threadHold = sameZonesFromDifferentTime[0][zone_property]"  ng-class="{'greenBg':  threadHold<= 400 , 'orangeBg': (threadHold > 400) && (threadHold < 450), 'redBg': threadHold >= 450} ">
+                            <span ng-hide="showPreviousTileCount">{{threadHold}}</span>
+                            <div ng_show = "showPreviousTileCount">
+                                <table ng-repeat="zone in sameZonesFromDifferentTime">
+                                    <tr>
+                                        <td> <span ng-show="zone !== undefined">{{zone[zone_property]}}</span> </td>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
+
+                        <div ng-if = "zone_property === 'Verts'" ng-init="threadHold = sameZonesFromDifferentTime[0][zone_property]"  ng-class="{'greenBg':  threadHold<= 75000 , 'orangeBg': (threadHold > 75000) && (threadHold < 80000), 'redBg': threadHold >= 80000} ">
+                            <span ng-hide="showPreviousTileCount">{{threadHold}}</span>
+                            <div ng_show = "showPreviousTileCount">
+                                <table ng-repeat="zone in sameZonesFromDifferentTime">
+                                    <tr>
+                                        <td> <span ng-show="zone !== undefined">{{zone[zone_property]}}</span> </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div ng-if = "zone_property !== 'TileCount' && zone_property !== 'Verts'" ng-init="threadHold = sameZonesFromDifferentTime[0][zone_property]">
+                            <span ng-hide="showPreviousTileCount">{{threadHold}}</span>
+                            <div ng_show = "showPreviousTileCount">
+                                <table ng-repeat="zone in sameZonesFromDifferentTime">
+                                    <tr>
+                                        <td> <span ng-show="zone !== undefined">{{zone[zone_property]}}</span> </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!--<span ng-hide="showPreviousTileCount">{{sameZonesFromDifferentTime[0][zone_property]}}</span>-->
+
+                        <!--<div ng_show = "showPreviousTileCount">-->
+                            <!--<table ng-repeat="zone in sameZonesFromDifferentTime">-->
+                                <!--<tr>-->
+                                    <!--<td> <span ng-show="zone !== undefined">{{zone[property]}}</span> </td>-->
+                                <!--</tr>-->
+                            <!--</table>-->
+                        <!--</div>-->
                         <!--<code class="text-right" ng-show="showTileCountChangePencentage" ng-style="{'background-color' : (x.TileCountChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px', 'text-align':'right'}">-->
                         <!--{{" " +  x.TileCountChange|pn_number}}%-->
                         <!--</code>-->
                     </td>
-
-
-
-
-
-
-
-                    <!--<td  ng-class="{'greenBg': sameZonesFromDifferentTime[0].TileCount <= 400 , 'orangeBg': ((sameZonesFromDifferentTime[0].TileCount > 400) && (sameZonesFromDifferentTime[0].TileCount < 450)), 'redBg': sameZonesFromDifferentTime[0].TileCount >= 450} ">-->
-                    <!--<span ng-hide="showPreviousTileCount">{{sameZonesFromDifferentTime[0].TileCount}}</span>-->
-                    <!--<div ng_show = "showPreviousTileCount">-->
-                    <!--<table ng-repeat="zone in sameZonesFromDifferentTime">-->
-                    <!--<tr>-->
-                    <!--<td> <span ng-show="zone !== undefined">{{zone['TileCount']}}</span> </td>-->
-                    <!--</tr>-->
-                    <!--</table>-->
-                    <!--</div>-->
-                    <!--&lt;!&ndash;<code class="text-right" ng-show="showTileCountChangePencentage" ng-style="{'background-color' : (x.TileCountChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px', 'text-align':'right'}">&ndash;&gt;-->
-                    <!--&lt;!&ndash;{{" " +  x.TileCountChange|pn_number}}%&ndash;&gt;-->
-                    <!--&lt;!&ndash;</code>&ndash;&gt;-->
-                    <!--</td>-->
-
-                    <!--<td> {{sameZonesFromDifferentTime[0]['Zone']}}</td>-->
-                    <!--<td ng-include="'./partials/test.html'"></td>-->
-                    <!--<td ng-init="field = 'SizeOnDisk'" ng-include="'./partials/test.html'"></td>-->
-
-                    <!--<td ng-include="'./partials/test.html'"></td>-->
-                    <!--<td ng-init="field = 'SizeOnDisk'" ng-include="'./partials/test.html'"></td>-->
-                    <!--<td ng-init="field = 'Verts'" ng-include="'./partials/test.html'"></td>-->
-                    <!--<td ng-init="field = 'Components'" ng-include="'./partials/test.html'"></td>-->
-
-                    <!--<td class="tableCellColor">-->
-                    <!--<span ng-show="x[0] !== undefined">{{x[0].TotalGameObjects}}</span>-->
-                    <!--<div ng_show = "showPreviousTotalGameObjects">-->
-                    <!--<table>-->
-                    <!--<tr>-->
-                    <!--<td> <span ng-show="x[1] !== undefined">{{x[1].TotalGameObjects}}  {{x[1]|getDate}}</span> </td>-->
-                    <!--</tr>-->
-                    <!--<tr>-->
-                    <!--<td> <span ng-show="x[2] !== undefined">{{x[2].TotalGameObjects}}  {{x[1]|getDate}}</span> </td>-->
-                    <!--</tr>-->
-
-                    <!--<tr>-->
-                    <!--<td> <span ng-show="x[3] !== undefined">{{x[3].TotalGameObjects}}  {{x[1]|getDate}}</span> </td>-->
-                    <!--</tr>-->
-
-                    <!--<tr>-->
-                    <!--<td> <span ng-show="x[4] !== undefined">{{x[4].TotalGameObjects}}  {{x[1]|getDate}}</span> </td>-->
-                    <!--</tr>-->
-
-                    <!--<tr>-->
-                    <!--<td> <span ng-show="x[5] !== undefined">{{x[5].TotalGameObjects}}  {{x[1]|getDate}}</span> </td>-->
-                    <!--</tr>-->
-
-                    <!--</table>-->
-                    <!--</div>-->
-                    <!--</td>-->
-
-                    <!--<td>-->
-                    <!--<span ng-show="x[0] !== undefined">{{x[0].SizeOnDisk}}</span>-->
-                    <!--<div ng_show = "showPreviousSizeOnDisk">-->
-                    <!--<span ng-show="x[1] !== undefined">&#9666  {{x[1].SizeOnDisk}}</span>-->
-                    <!--<span ng-show="x[2] !== undefined">&#9666  {{x[2].SizeOnDisk}}</span>-->
-                    <!--<span ng-show="x[3] !== undefined">&#9666  {{x[3].SizeOnDisk}}</span>-->
-                    <!--<span ng-show="x[4] !== undefined">&#9666  {{x[4].SizeOnDisk}}</span>-->
-                    <!--</div>-->
-                    <!--</td>-->
-
-                    <!--<td ng-class="{'redBg': x[0].Verts >= 80000, 'orangeBg': ((x[0].Verts > 75000) && (x[0].Verts < 80000)), 'greenBg': x[0].Verts <= 75000}">-->
-                    <!--<span ng-show="x[0] !== undefined">{{x[0].Verts}}</span>-->
-                    <!--<div ng_show = "showPreviousVerts">-->
-                    <!--<span ng-show="x[1] !== undefined">&#9666  {{x[1].Verts}}</span>-->
-                    <!--<span ng-show="x[2] !== undefined">&#9666  {{x[2].Verts}}</span>-->
-                    <!--<span ng-show="x[3] !== undefined">&#9666  {{x[3].Verts}}</span>-->
-                    <!--<span ng-show="x[4] !== undefined">&#9666  {{x[4].Verts}}</span>-->
-                    <!--</div>-->
-
-                    <!--</td>-->
-
-                    <!--<td>-->
-                    <!--<span ng-show="x[0] !== undefined">{{x[0].Components}}</span>-->
-                    <!--<div ng_show = "showPreviousComponents">-->
-                    <!--<span ng-show="x[1] !== undefined">&#9666  {{x[1].Components}}</span>-->
-                    <!--<span ng-show="x[2] !== undefined">&#9666  {{x[2].Components}}</span>-->
-                    <!--<span ng-show="x[3] !== undefined">&#9666  {{x[3].Components}}</span>-->
-                    <!--<span ng-show="x[4] !== undefined">&#9666  {{x[4].Components}}</span>-->
-                    <!--</div>-->
-
-                    <!--</td>-->
-
-                    <!--<td>-->
-                    <!--<span ng-show="x[0] !== undefined">{{x[0].PlaymakerObjects}}</span>-->
-                    <!--<div ng_show = "showPreviousPlaymakerObjects">-->
-                    <!--<span ng-show="x[1] !== undefined">&#9666  {{x[1].PlaymakerObjects}}</span>-->
-                    <!--<span ng-show="x[2] !== undefined">&#9666  {{x[2].PlaymakerObjects}}</span>-->
-                    <!--<span ng-show="x[3] !== undefined">&#9666  {{x[3].PlaymakerObjects}}</span>-->
-                    <!--<span ng-show="x[4] !== undefined">&#9666  {{x[4].PlaymakerObjects}}</span>-->
-                    <!--</div>-->
-
-                    <!--</td>-->
-
-                    <!--<td>-->
-                    <!--<span ng-show="x[0] !== undefined">{{x[0].PlaymakerEvents}}</span>-->
-                    <!--<div ng_show = "showPreviousPlaymakerEvents">-->
-                    <!--<span ng-show="x[1] !== undefined">&#9666  {{x[1].PlaymakerEvents}}</span>-->
-                    <!--<span ng-show="x[2] !== undefined">&#9666  {{x[2].PlaymakerEvents}}</span>-->
-                    <!--<span ng-show="x[3] !== undefined">&#9666  {{x[3].PlaymakerEvents}}</span>-->
-                    <!--<span ng-show="x[4] !== undefined">&#9666  {{x[4].PlaymakerEvents}}</span>-->
-                    <!--</div>-->
-                    <!--</td>-->
-
-
-                    <!--<td>-->
-                    <!--<span ng-show="x[0] !== undefined">{{x[0].EnemySpawners}}</span>-->
-                    <!--<div ng_show = "showPreviousEnemySpawners">-->
-                    <!--<span ng-show="x[1] !== undefined">&#9666  {{x[1].EnemySpawners}}</span>-->
-                    <!--<span ng-show="x[2] !== undefined">&#9666  {{x[2].EnemySpawners}}</span>-->
-                    <!--<span ng-show="x[3] !== undefined">&#9666  {{x[3].EnemySpawners}}</span>-->
-                    <!--<span ng-show="x[4] !== undefined">&#9666  {{x[4].EnemySpawners}}</span>-->
-                    <!--</div>-->
-                    <!--</td>-->
-
-                    <!--<td>-->
-
-                    <!--<span ng-show="x[0] !== undefined">{{x[0].Breakables}}</span>-->
-                    <!--<div ng_show = "showPreviousBreakables">-->
-                    <!--<span ng-show="x[1] !== undefined">&#9666  {{x[1].Breakables}}</span>-->
-                    <!--<span ng-show="x[2] !== undefined">&#9666  {{x[2].Breakables}}</span>-->
-                    <!--<span ng-show="x[3] !== undefined">&#9666  {{x[3].Breakables}}</span>-->
-                    <!--<span ng-show="x[4] !== undefined">&#9666  {{x[4].Breakables}}</span>-->
-
-                    <!--</div>-->
-                    <!--</td>-->
-
-                    <!--<td>-->
-                    <!--<span>{{x.SizeOnDisk}} </span>-->
-
-                    <!--<code class="text-right" ng-show="showSizeOnDiskChangePencentage" ng-style="{'background-color' : (x.SizeOnDiskChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">-->
-                    <!--{{" " +  x.SizeOnDiskChange|pn_number}}%-->
-                    <!--</code>-->
-                    <!--</td>-->
-
-                    <!--<td>-->
-                    <!--<span>{{x.Verts}} </span>-->
-                    <!--<span ng_show = "showPreviousVerts"> &#9666 {{x.P_Verts}} </span>-->
-                    <!--<code class="text-right" ng-show="showVertsChangePencentage" ng-style="{'background-color' : (x.VertsChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">-->
-                    <!--{{" " +  x.VertsChange|pn_number}}%-->
-                    <!--</code>-->
-                    <!--</td>-->
-
-                    <!--<td>-->
-                    <!--<span>{{x.Components}} </span>-->
-                    <!--<span ng_show = "showPreviousComponents"> &#9666 {{x.P_Components}} </span>-->
-                    <!--<code class="text-right" ng-show="showComponentsChangePencentage" ng-style="{'background-color' : (x.ComponentsChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">-->
-                    <!--{{" " +  x.ComponentsChange|pn_number}}%-->
-                    <!--</code>-->
-                    <!--</td>-->
-
-                    <!--<td>-->
-                    <!--<span>{{x.PlaymakerEvents}} </span>-->
-                    <!--<span ng_show = "showPreviousPlaymakerEvents"> &#9666 {{x.P_PlaymakerEvents}} </span>-->
-                    <!--<code class="text-right" ng-show="showPlaymakerEventsChangePencentage" ng-style="{'background-color' : (x.PlaymakerEventsChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">-->
-                    <!--{{" " +  x.PlaymakerEventsChange|pn_number}}%-->
-                    <!--</code>-->
-                    <!--</td>-->
-
-                    <!--<td>-->
-                    <!--<span>{{x.EnemySpawners}} </span>-->
-                    <!--<span ng_show = "showPreviousEnemySpawners"> &#9666 {{x.P_EnemySpawners}} </span>-->
-                    <!--<code class="text-right" ng-show="showEnemySpawnersChangePencentage" ng-style="{'background-color' : (x.EnemySpawnersChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">-->
-                    <!--{{" " +  x.EnemySpawnersChange|pn_number}}%-->
-                    <!--</code>-->
-                    <!--</td>-->
-
-                    <!--<td>-->
-                    <!--<span>{{x.Breakables}} </span>-->
-                    <!--<span ng_show = "showPreviousBreakables"> &#9666 {{x.P_Breakables}} </span>-->
-                    <!--<code class="text-right" ng-show="showBreakablesChangePencentage" ng-style="{'background-color' : (x.BreakablesChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px'}">-->
-                    <!--{{" " +  x.BreakablesChange|pn_number}}%-->
-                    <!--</code>-->
-                    <!--</td>-->
-                    <!--</tr>-->
             </table>
         </div>
     </div>
