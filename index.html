@@ -103,7 +103,7 @@
                         ng-class="{'greenBg':  value1<= 400 , 'orangeBg': (value1 > 400) && (value1 < 450), 'redBg': value1 >= 450} ">
                         {{zone_record.TileCount}}
                         <div ng-show="showPreviousValues">
-                            <div class="container" ng-repeat="n in zone_record.P_TileCount track by $index">
+                            <div class="container" ng-repeat="n in zone_record.P_TileCount track by $index" ng-if="$index >= 1">
                                 {{n}}&#160 &#64 {{zone_record.P__created_on[$index] | getDate}}
                             </div>
                         </div>
@@ -112,7 +112,7 @@
                     <td>
                         {{zone_record.TotalGameObjects}}
                         <div class="check-element animate-show" ng-show="showPreviousValues">
-                            <div class="container" ng-repeat="n in zone_record.P_TotalGameObjects track by $index">
+                            <div class="container" ng-repeat="n in zone_record.P_TotalGameObjects track by $index" ng-if="$index >= 1">
                                 {{n}}&#160 &#64 {{zone_record.P__created_on[$index] | getDate}}
                             </div>
                         </div>
@@ -121,7 +121,7 @@
                     <td>
                         {{zone_record.SizeOnDisk}}
                         <div ng-show="showPreviousValues">
-                            <div class="container" ng-repeat="n in zone_record.P_SizeOnDisk track by $index">
+                            <div class="container" ng-repeat="n in zone_record.P_SizeOnDisk track by $index" ng-if="$index >= 1">
                                 {{n}}&#160 &#64 {{zone_record.P__created_on[$index] | getDate}}
                             </div>
                         </div>
@@ -131,7 +131,7 @@
                         ng-class="{'greenBg':  value<= 75000 , 'orangeBg': (value > 75000) && (value < 80000), 'redBg': value >= 80000} ">
                         {{zone_record.Verts}}
                         <div ng-show="showPreviousValues">
-                            <div class="container" ng-repeat="n in zone_record.P_Verts track by $index">
+                            <div class="container" ng-repeat="n in zone_record.P_Verts track by $index" ng-if="$index >= 1">
                                 {{n}}&#160 &#64 {{zone_record.P__created_on[$index] | getDate}}
                             </div>
                         </div>
@@ -140,7 +140,7 @@
                     <td>
                         {{zone_record.Components}}
                         <div ng-show="showPreviousValues">
-                            <div class="container" ng-repeat="n in zone_record.P_Components track by $index">
+                            <div class="container" ng-repeat="n in zone_record.P_Components track by $index" ng-if="$index >= 1">
                                 {{n}}&#160 &#64 {{zone_record.P__created_on[$index] | getDate}}
                             </div>
                         </div>
@@ -150,7 +150,7 @@
                     <td>
                         {{zone_record.PlaymakerObjects}}
                         <div ng-show="showPreviousValues">
-                            <div class="container" ng-repeat="n in zone_record.P_PlaymakerObjects track by $index">
+                            <div class="container" ng-repeat="n in zone_record.P_PlaymakerObjects track by $index" ng-if="$index >= 1">
                                 {{n}}&#160 &#64 {{zone_record.P__created_on[$index] | getDate}}
                             </div>
                         </div>
@@ -160,7 +160,7 @@
                     <td>
                         {{zone_record.PlaymakerEvents}}
                         <div ng-show="showPreviousValues">
-                            <div class="container" ng-repeat="n in zone_record.P_PlaymakerEvents track by $index">
+                            <div class="container" ng-repeat="n in zone_record.P_PlaymakerEvents track by $index" ng-if="$index >= 1">
                                 {{n}}&#160 &#64 {{zone_record.P__created_on[$index] | getDate}}
                             </div>
                         </div>
@@ -170,7 +170,7 @@
                     <td>
                         {{zone_record.EnemySpawners}}
                         <div ng-show="showPreviousValues">
-                            <div class="container" ng-repeat="n in zone_record.P_EnemySpawners track by $index">
+                            <div class="container" ng-repeat="n in zone_record.P_EnemySpawners track by $index" ng-if="$index >= 1">
                                 {{n}}&#160 &#64 {{zone_record.P__created_on[$index] | getDate}}
                             </div>
                         </div>
@@ -180,7 +180,7 @@
                     <td>
                         {{zone_record.Breakables}}
                         <div ng-show="showPreviousValues">
-                            <div class="container" ng-repeat="n in zone_record.P_Breakables track by $index">
+                            <div class="container" ng-repeat="n in zone_record.P_Breakables track by $index" ng-if="$index >= 1">
                                 {{n}}&#160 &#64 {{zone_record.P__created_on[$index] | getDate}}
                             </div>
                         </div>
