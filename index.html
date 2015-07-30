@@ -12,6 +12,7 @@
 
 
     <style type="text/css">
+
         .sortorder:after {
             content: '\25b2';
         }
@@ -51,8 +52,6 @@
 <body>
 <div ng-app="zone_report">
 
-    <div ng-include="'./partials/test.html'"> </div>
-
     <div ng-controller="request_controller" >
 
         <div ng-hide="result_for_table.length > 0">
@@ -71,200 +70,63 @@
                 </div>
             </form>
 
-            <!--table-striped -->
             <table class="table table-bordered table-hover table-condensed" >
                 <tr>
                     <th>
-                        <a href="" ng-click="order('Zone')">Zone</a>
-                        <span class="sortorder" ng-show="predicate === 'Zone'" ng-class="{reverse:reverse}"></span>
+                        <a href="" ng-click="order('Name')">Zone</a>
+                        <span class="sortorder" ng-show="predicate === 'Name'" ng-class="{reverse:reverse}"></span>
                     </th>
 
-                    <!--<th ng-init="headerText = 'Zone'" ng-include="'./partials/tableHeader.html'"></th>-->
-
-                    <th>
-                        <a href="" ng-click="order('TileCount')">TileCount</a>
-                        <span class="sortorder" ng-show="predicate === 'TileCount'" ng-class="{reverse:reverse}"></span>
-
-                        <div class="colorLink" >
-                            <label>Show previous values
-                                <input type="checkbox" ng-model="showPreviousTileCount">
-                            </label><br/>
-
-                            <!--<label>Show % increase-->
-                            <!--<input type="checkbox" ng-model="showTileCountChangePencentage">-->
-                            <!--</label><br/>-->
-                        </div>
-
-                        <!--<a class="text-primary" href="" ng-click="order('TileCountChange')">Oder By % Change</a>-->
-                        <span class="sortorder" ng-show="predicate === 'TileCountChange'" ng-class="{reverse:reverse}"></span>
+                    <th ng-repeat="zone_property in zone_properties">
+                        <a href="" ng-click="order(zone_property)">{{zone_property}}</a>
+                        <span class="sortorder" ng-show="predicate === zone_property" ng-class="{reverse:reverse}"></span>
                     </th>
 
-                    <th>
-                        <a href="" ng-click="order('TotalGameObjects')">TotalGameObjects</a>
-                        <span class="sortorder" ng-show="predicate === 'TotalGameObjects'" ng-class="{reverse:reverse}"></span>
-
-                        <div class="colorLink" >
-                            <label>Show previous values
-                                <input type="checkbox" ng-model="showPreviousTotalGameObjects">
-                            </label><br/>
-                        </div>
-                        <span class="sortorder" ng-show="predicate === 'TotalGameObjectsChange'" ng-class="{reverse:reverse}"></span>
-
-                    </th>
-
-
-                    <th>
-                        <a href="" ng-click="order('SizeOnDisk')">SizeOnDisk(MB)</a>
-                        <span class="sortorder" ng-show="predicate === 'SizeOnDisk(MB)'" ng-class="{reverse:reverse}"></span>
-                        <div class="colorLink" >
-                            <label>Show previous values
-                                <input type="checkbox" ng-model="showPreviousSizeOnDisk">
-                            </label><br/>
-                        </div>
-                        <span class="sortorder" ng-show="predicate === 'SizeOnDiskChange'" ng-class="{reverse:reverse}"></span>
-
-                    </th>
-
-                    <th>
-                        <a href="" ng-click="order('Verts')">Verts</a>
-                        <span class="sortorder" ng-show="predicate === 'Verts'" ng-class="{reverse:reverse}"></span>
-
-                        <div class="colorLink" >
-                            <label>Show previous values
-                                <input type="checkbox" ng-model="showPreviousVerts">
-                            </label><br/>
-                        </div>
-
-                        <span class="sortorder" ng-show="predicate === 'VertsChange'" ng-class="{reverse:reverse}"></span>
-
-                    </th>
-
-                    <th>
-                        <a href="" ng-click="order('Components')">Components</a>
-                        <span class="sortorder" ng-show="predicate === 'Components'" ng-class="{reverse:reverse}"></span>
-
-                        <div class="colorLink" >
-                            <label>Show previous values
-                                <input type="checkbox" ng-model="showPreviousComponents">
-                            </label><br/>
-                        </div>
-
-                        <span class="sortorder" ng-show="predicate === 'ComponentsChange'" ng-class="{reverse:reverse}"></span>
-
-                    </th>
-
-
-
-                    <th>
-                        <a href="" ng-click="order('PlaymakerObjects')">PlaymakerObjects</a>
-                        <span class="sortorder" ng-show="predicate === 'PlaymakerObjects'" ng-class="{reverse:reverse}"></span>
-                        <div class="colorLink" >
-                            <label>Show previous values
-                                <input type="checkbox" ng-model="showPreviousPlaymakerObjects">
-                            </label><br/>
-                        </div>
-
-                        <span class="sortorder" ng-show="predicate === 'PlaymakerObjects'" ng-class="{reverse:reverse}"></span>
-                    </th>
-
-                    <th>
-                        <a href="" ng-click="order('PlaymakerEvents')">PlaymakerEvents</a>
-                        <span class="sortorder" ng-show="predicate === 'PlaymakerEvents'" ng-class="{reverse:reverse}"></span>
-                        <div class="colorLink" >
-                            <label>Show previous value
-                                <input type="checkbox" ng-model="showPreviousPlaymakerEvents">
-                            </label><br/>
-                        </div>
-
-                        <span class="sortorder" ng-show="predicate === 'PlaymakerEventsChange'" ng-class="{reverse:reverse}"></span>
-
-
-                    </th>
-
-
-                    <th>
-                        <a href="" ng-click="order('EnemySpawners')">EnemySpawners</a>
-                        <span class="sortorder" ng-show="predicate === 'EnemySpawners'" ng-class="{reverse:reverse}"></span>
-                        <div class="colorLink" >
-                            <label>Show previous value
-                                <input type="checkbox" ng-model="showPreviousEnemySpawners">
-                            </label><br/>
-                        </div>
-
-                        <span class="sortorder" ng-show="predicate === 'EnemySpawnersChange'" ng-class="{reverse:reverse}"></span>
-
-
-                    </th>
-
-                    <th>
-                        <a href="" ng-click="order('Breakables')">Breakables</a>
-                        <span class="sortorder" ng-show="predicate === 'Breakables'" ng-class="{reverse:reverse}"></span>
-                        <div class="colorLink" >
-                            <label>Show previous value
-                                <input type="checkbox" ng-model="showPreviousBreakables">
-                            </label><br/>
-                        </div>
-
-                        <span class="sortorder" ng-show="predicate === 'BreakablesChange'" ng-class="{reverse:reverse}"></span>
-
-
-                    </th>
                 </tr>
 
-
-
-                <tr ng-repeat="sameZonesFromDifferentTime in result_for_table | orderObjectBy:predicate:reverse | filter:searchAZone">
-
-                    <td class="text-justify">{{sameZonesFromDifferentTime[0]['Zone']}}</td>
-
-                    <td ng-repeat="zone_property in zone_properties">
-
-                        <div ng-if = "zone_property === 'TileCount'" ng-init="threadHold = sameZonesFromDifferentTime[0][zone_property]"  ng-class="{'greenBg':  threadHold<= 400 , 'orangeBg': (threadHold > 400) && (threadHold < 450), 'redBg': threadHold >= 450} ">
-                            <span ng-hide="showPreviousTileCount">{{threadHold}}</span>
-                            <div ng_show = "showPreviousTileCount">
-                                <table ng-repeat="zone in sameZonesFromDifferentTime">
-                                    <tr>
-                                        <td> <span ng-show="zone !== undefined">{{zone[zone_property]}}</span> </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-
-                        <div ng-if = "zone_property === 'Verts'" ng-init="threadHold = sameZonesFromDifferentTime[0][zone_property]"  ng-class="{'greenBg':  threadHold<= 75000 , 'orangeBg': (threadHold > 75000) && (threadHold < 80000), 'redBg': threadHold >= 80000} ">
-                            <span ng-hide="showPreviousTileCount">{{threadHold}}</span>
-                            <div ng_show = "showPreviousTileCount">
-                                <table ng-repeat="zone in sameZonesFromDifferentTime">
-                                    <tr>
-                                        <td> <span ng-show="zone !== undefined">{{zone[zone_property]}}</span> </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-
-                        <div ng-if = "zone_property !== 'TileCount' && zone_property !== 'Verts'" ng-init="threadHold = sameZonesFromDifferentTime[0][zone_property]">
-                            <span ng-hide="showPreviousTileCount">{{threadHold}}</span>
-                            <div ng_show = "showPreviousTileCount">
-                                <table ng-repeat="zone in sameZonesFromDifferentTime">
-                                    <tr>
-                                        <td> <span ng-show="zone !== undefined">{{zone[zone_property]}}</span> </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-
-                        <!--<span ng-hide="showPreviousTileCount">{{sameZonesFromDifferentTime[0][zone_property]}}</span>-->
-
-                        <!--<div ng_show = "showPreviousTileCount">-->
-                            <!--<table ng-repeat="zone in sameZonesFromDifferentTime">-->
-                                <!--<tr>-->
-                                    <!--<td> <span ng-show="zone !== undefined">{{zone[property]}}</span> </td>-->
-                                <!--</tr>-->
-                            <!--</table>-->
-                        <!--</div>-->
-                        <!--<code class="text-right" ng-show="showTileCountChangePencentage" ng-style="{'background-color' : (x.TileCountChange | num) > 0 ? 'pink' : '#99CC00', 'width':'20px', 'text-align':'right'}">-->
-                        <!--{{" " +  x.TileCountChange|pn_number}}%-->
-                        <!--</code>-->
+                <tr ng-repeat="zone_record in zone_records | orderBy:predicate:reverse | filter:searchAZone">
+                    <td>
+                        {{zone_record.Name}}
                     </td>
+
+                    <td ng-init="value1 = zone_record.TileCount"  ng-class="{'greenBg':  value1<= 400 , 'orangeBg': (value1 > 400) && (value1 < 450), 'redBg': value1 >= 450} ">
+                        {{zone_record.TileCount}}
+                    </td>
+
+                    <td>
+                        {{zone_record.TotalGameObjects}}
+                    </td>
+
+                    <td>
+                        {{zone_record.SizeOnDisk}}
+                    </td>
+
+                    <td ng-init="value = zone_record.Verts"  ng-class="{'greenBg':  value<= 75000 , 'orangeBg': (value > 75000) && (value < 80000), 'redBg': value >= 80000} ">
+                        {{zone_record.Verts}}
+                    </td>
+
+                    <td>
+                        {{zone_record.Components}}
+                    </td>
+
+                    <td>
+                        {{zone_record.PlaymakerObjects}}
+                    </td>
+
+                    <td>
+                        {{zone_record.PlaymakerEvents}}
+                    </td>
+
+                    <td>
+                        {{zone_record.EnemySpawners}}
+                    </td>
+
+                    <td>
+                        {{zone_record.Breakables}}
+                    </td>
+
+                </tr>
+
             </table>
         </div>
     </div>
