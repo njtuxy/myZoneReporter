@@ -12,18 +12,15 @@
 
 
     <style type="text/css">
-
         .sortorder:after {
             content: '\25b2';
         }
 
-        .sortorder.reverse:after
-        {
+        .sortorder.reverse:after {
             content: '\25bc';
         }
 
-        .colorLink a
-        {
+        .colorLink a {
             color: orange !important;
         }
 
@@ -52,14 +49,14 @@
 <body>
 <div ng-app="zone_report">
 
-    <div ng-controller="request_controller" >
+    <div ng-controller="request_controller">
 
         <div ng-hide="result_for_table.length > 0">
             <span us-spinner></span>
         </div>
 
-        <div ng-show = "result_for_table.length > 0" class="table-responsive">
-            <h3 class="events text-center text-primary" >SWAT Zone Report - Update at {{updateTime}}</h3>
+        <div ng-show="result_for_table.length > 0" class="table-responsive">
+            <h3 class="events text-center text-primary">SWAT Zone Report - Update at {{updateTime}}</h3>
 
             <form>
                 <div class="form-group">
@@ -70,59 +67,124 @@
                 </div>
             </form>
 
-            <table class="table table-bordered table-hover table-condensed" >
+            <table class="table table-bordered table-hover table-condensed">
                 <tr>
                     <th>
                         <a href="" ng-click="order('Name')">Zone</a>
                         <span class="sortorder" ng-show="predicate === 'Name'" ng-class="{reverse:reverse}"></span>
                     </th>
 
-                    <th ng-repeat="zone_property in zone_properties">
+
+                    <th ng-repeat="zone_property in zone_properties track by $index">
                         <a href="" ng-click="order(zone_property)">{{zone_property}}</a>
-                        <span class="sortorder" ng-show="predicate === zone_property" ng-class="{reverse:reverse}"></span>
+                        <span class="sortorder" ng-show="predicate === zone_property"
+                              ng-class="{reverse:reverse}"></span>
                     </th>
 
                 </tr>
 
+                <tr>
+                    <th>
+                        <div class="colorLink">
+                            <label>Show previous values
+                                <input type="checkbox" ng-model="showPreviousValues">
+                            </label>
+                        </div>
+                    </th>
+
+
                 <tr ng-repeat="zone_record in zone_records | orderBy:predicate:reverse | filter:searchAZone">
+
                     <td>
                         {{zone_record.Name}}
                     </td>
 
-                    <td ng-init="value1 = zone_record.TileCount"  ng-class="{'greenBg':  value1<= 400 , 'orangeBg': (value1 > 400) && (value1 < 450), 'redBg': value1 >= 450} ">
+                    <td ng-init="value1 = zone_record.TileCount"
+                        ng-class="{'greenBg':  value1<= 400 , 'orangeBg': (value1 > 400) && (value1 < 450), 'redBg': value1 >= 450} ">
                         {{zone_record.TileCount}}
+                        <div ng-show="showPreviousValues">
+                            <div class="container" ng-repeat="n in zone_record.P_TileCount track by $index">
+                                {{n}}&#160 &#64 {{zone_record.P__created_on[$index] | getDate}}
+                            </div>
+                        </div>
                     </td>
 
                     <td>
                         {{zone_record.TotalGameObjects}}
+                        <div class="check-element animate-show" ng-show="showPreviousValues">
+                            <div class="container" ng-repeat="n in zone_record.P_TotalGameObjects track by $index">
+                                {{n}}&#160 &#64 {{zone_record.P__created_on[$index] | getDate}}
+                            </div>
+                        </div>
                     </td>
 
                     <td>
                         {{zone_record.SizeOnDisk}}
+                        <div ng-show="showPreviousValues">
+                            <div class="container" ng-repeat="n in zone_record.P_SizeOnDisk track by $index">
+                                {{n}}&#160 &#64 {{zone_record.P__created_on[$index] | getDate}}
+                            </div>
+                        </div>
                     </td>
 
-                    <td ng-init="value = zone_record.Verts"  ng-class="{'greenBg':  value<= 75000 , 'orangeBg': (value > 75000) && (value < 80000), 'redBg': value >= 80000} ">
+                    <td ng-init="value = zone_record.Verts"
+                        ng-class="{'greenBg':  value<= 75000 , 'orangeBg': (value > 75000) && (value < 80000), 'redBg': value >= 80000} ">
                         {{zone_record.Verts}}
+                        <div ng-show="showPreviousValues">
+                            <div class="container" ng-repeat="n in zone_record.P_Verts track by $index">
+                                {{n}}&#160 &#64 {{zone_record.P__created_on[$index] | getDate}}
+                            </div>
+                        </div>
                     </td>
 
                     <td>
                         {{zone_record.Components}}
+                        <div ng-show="showPreviousValues">
+                            <div class="container" ng-repeat="n in zone_record.P_Components track by $index">
+                                {{n}}&#160 &#64 {{zone_record.P__created_on[$index] | getDate}}
+                            </div>
+                        </div>
+
                     </td>
 
                     <td>
                         {{zone_record.PlaymakerObjects}}
+                        <div ng-show="showPreviousValues">
+                            <div class="container" ng-repeat="n in zone_record.P_PlaymakerObjects track by $index">
+                                {{n}}&#160 &#64 {{zone_record.P__created_on[$index] | getDate}}
+                            </div>
+                        </div>
+
                     </td>
 
                     <td>
                         {{zone_record.PlaymakerEvents}}
+                        <div ng-show="showPreviousValues">
+                            <div class="container" ng-repeat="n in zone_record.P_PlaymakerEvents track by $index">
+                                {{n}}&#160 &#64 {{zone_record.P__created_on[$index] | getDate}}
+                            </div>
+                        </div>
+
                     </td>
 
                     <td>
                         {{zone_record.EnemySpawners}}
+                        <div ng-show="showPreviousValues">
+                            <div class="container" ng-repeat="n in zone_record.P_EnemySpawners track by $index">
+                                {{n}}&#160 &#64 {{zone_record.P__created_on[$index] | getDate}}
+                            </div>
+                        </div>
+
                     </td>
 
                     <td>
                         {{zone_record.Breakables}}
+                        <div ng-show="showPreviousValues">
+                            <div class="container" ng-repeat="n in zone_record.P_Breakables track by $index">
+                                {{n}}&#160 &#64 {{zone_record.P__created_on[$index] | getDate}}
+                            </div>
+                        </div>
+
                     </td>
 
                 </tr>
@@ -130,7 +192,6 @@
             </table>
         </div>
     </div>
-
 
 
 </div>
