@@ -62,7 +62,7 @@
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-addon"><i class="fa fa-search"></i></div>
-                        <input type="text" class="form-control" placeholder="Search a zone" ng-model="searchAZone">
+                        <input type="text" class="form-control" placeholder="Search a zone" ng-model="searchAZone" ng-model-options="{debounce: 500}">
                     </div>
                 </div>
             </form>
@@ -86,7 +86,7 @@
                 <tr>
                     <th>
                         <div class="colorLink">
-                            <label>Show previous values
+                            <label>Show Last 5 values
                                 <input type="checkbox" ng-model="showPreviousValues">
                             </label>
                         </div>
