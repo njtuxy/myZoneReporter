@@ -96,7 +96,7 @@
                 <tr ng-repeat="zone_record in zone_records | orderBy:predicate:reverse | filter:searchAZone">
 
                     <td>
-                        {{zone_record.Name}}
+                        <a href="zone_pngs/{{zone_record.Name}}.png">{{zone_record.Name}}</a>
                     </td>
 
                     <td ng-init="value1 = zone_record.TileCount"
