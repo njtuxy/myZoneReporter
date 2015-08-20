@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <script src="./bower_components/spin.js/spin.js"></script>
     <script src="./bower_components/angular-spinner/angular-spinner.js"></script>
+    <script src="./bower_components/ngDialog/js/ngDialog.js"></script>
+    <link rel="stylesheet" href="./bower_components/ngDialog/css/ngDialog.css">
+    <link rel="stylesheet" href="./bower_components/ngDialog/css/ngDialog-theme-plain.css">
     <script src="./lib/zone_report_helper.js"></script>
 
 
@@ -55,6 +58,8 @@
             <span us-spinner></span>
         </div>
 
+        <div ng-init="outerIndex = 'xxxxxx'"> </div>
+
         <div ng-show="result_for_table.length > 0" class="table-responsive">
             <h3 class="events text-center text-primary">SWAT Zone Report - Update at {{updateTime}}</h3>
 
@@ -96,7 +101,7 @@
                 <tr ng-repeat="zone_record in zone_records | orderBy:predicate:reverse | filter:searchAZone">
 
                     <td>
-                        <a href="zone_pngs/{{zone_record.Name}}.png">{{zone_record.Name}}</a>
+                        <a ng-click="clickToOpenMe(zone_record.Name)">{{zone_record.Name}} </a>
                     </td>
 
                     <td ng-init="value1 = zone_record.TileCount"

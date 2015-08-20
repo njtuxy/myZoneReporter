@@ -20,6 +20,7 @@
     "font-awesome": "~4.3.0",
     "zone_report_helper": "https://raw.githubusercontent.com/njtuxy/myZoneReporter/master/lib/zone_report_helper.js",
     "bootstrap-css-only": "~3.3.4",
-    "angular-spinner": "~0.6.2"
+    "angular-spinner": "~0.6.2",
+    "ngDialog": "~0.5.1"
   }
 }
