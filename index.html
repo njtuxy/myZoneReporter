@@ -101,7 +101,7 @@
                 <tr ng-repeat="zone_record in zone_records | orderBy:predicate:reverse | filter:searchAZone">
 
                     <td>
-                        <a ng-click="clickToOpenMe(zone_record.Name)">{{zone_record.Name}} </a>
+                        <a href=""  title="click to see the screenshot" ng-click="clickToOpenMe(zone_record.Name)">{{zone_record.Name}} </a>
                     </td>
 
                     <td ng-init="value1 = zone_record.TileCount"
